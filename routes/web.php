@@ -25,5 +25,7 @@ Route::get('{any?}', function() {  // per qualsiasi altra rotta mandami in guest
     return view("guest.home");
 })->where("any", ".*");
 
+// EROS ROUTE
+
 
 
