@@ -31,3 +31,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 // TEST DANIELE
 
 // branch Pietro
+
+// Merge Daniele
