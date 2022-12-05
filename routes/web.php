@@ -21,15 +21,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('{any?}', function() {  // per qualsiasi altra rotta mandami in guest.home
+    return view("guest.home");
+})->where("any", ".*");
 
-// TEST PROVA COMMIT
 
-// TEST 324
 
-// TEST EROS
-
-// TEST DANIELE
-
-// branch Pietro
-
-// Merge Daniele
