@@ -5,9 +5,13 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Restaurant;
 
 class User extends Authenticatable
 {
+    public function restaurant(){
+        return $this->hasOne('App\Restaurant');
+    }
     use Notifiable;
 
     /**
