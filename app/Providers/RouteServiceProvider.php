@@ -21,6 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
+    //una volta loggato l'utente viene
     public const HOME = '/home';
 
     /**
