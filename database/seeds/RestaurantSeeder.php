@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
+use App\Restaurant;
+use App\User;
+use Illuminate\Support\Str;
 
 class RestaurantSeeder extends Seeder
 {
@@ -9,8 +13,8 @@ class RestaurantSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        //
+        //add here faker
     }
 }

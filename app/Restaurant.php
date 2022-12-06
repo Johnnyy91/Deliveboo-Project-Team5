@@ -15,4 +15,6 @@ class Restaurant extends Model
         'name', 'slug', 'img', 'address', 'piva', 'lunch_time_slot', 'dinner_time_slot', 'user_id'
     ];
 
+
+
 }
