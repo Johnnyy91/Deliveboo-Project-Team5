@@ -32,3 +32,5 @@ Route::middleware('auth')  //si collega alla cartella middleware
     return view("guest.home");
 })->where("any", ".*");
 
+
+// test eros
