@@ -1,12 +1,13 @@
 <template>
-    <div>App vue</div>
-  </template>
+   <div>Homepage Guest</div>
+</template>
 
-  <script>
-  export default {
-      name:'App',
-  }
-  </script>
+<script>
+export default {
+    name:'App',
+}
+</script>
 
-  <style>
-  </style>
+<style>
+
+</style>
