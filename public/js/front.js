@@ -1983,7 +1983,7 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c("div", [_vm._v("App vue")]);
+  return _c("div", [_vm._v("Homepage Guest")]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -49842,8 +49842,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\MAMP\htdocs\Deliveboo-Project-Team5\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\MAMP\htdocs\Deliveboo-Project-Team5\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/johnnyyy/Desktop/ESERCITAZIONI_BOOLEAN/Deliveboo-Project-Team5/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! /Users/johnnyyy/Desktop/ESERCITAZIONI_BOOLEAN/Deliveboo-Project-Team5/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
