@@ -30,9 +30,9 @@ Route::middleware('auth')  //si collega alla cartella middleware
         Route::get('/restaurants', 'RestaurantController@index')->name('index'); // rotta se utente autenticato
     });
 
-  //  Route::get('{any?}', function() {  // per qualsiasi altra rotta mandami in guest.home
-//    return view("guest.home");
-// })->where("any", ".*");
+   Route::get('{any?}', function() {  // per qualsiasi altra rotta mandami in guest.home
+    return view("guest.home");
+ })->where("any", ".*");
 
 
 
