@@ -71,7 +71,7 @@
     </div>
     <div>
         <label for="image">Image:</label>
-        <input type="file" name="image">
+        <input type="file" name="image" disabled>
     </div>
     <input type="submit" value="Create">
 </form>
