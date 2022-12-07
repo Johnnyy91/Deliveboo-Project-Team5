@@ -2,8 +2,11 @@
 
 
 @section('content')
-{{-- {{ route('admin.restaurants.store') }} --}}
-<form action="" method="post">
+{{--  --}}
+{{-- TODO @if ($restaurants) --}}
+
+<form action="{{ route('admin.restaurants.store') }}" method="post">
+    @csrf
     <div>
         <label for="name">Name:</label>
         <input required maxlength="255" type="text" name="name" value="{{ old('name', '') }}">
@@ -15,7 +18,7 @@
     </div>
     <div>
         <label for="p.iva">P.iva:</label>
-        <input required maxlength="255" type="text" name="name" value="{{ old('piva', '') }}">
+        <input required maxlength="255" type="text" name="piva" value="{{ old('piva', '') }}">
         @error('piva')
             <div class="my-2 bg-danger text-white">
                 {{ $message }}
@@ -24,7 +27,7 @@
     </div>
     <div>
         <label for="address">Address:</label>
-        <input required maxlength="255" type="text" name="name" value="{{ old('address', '') }}">
+        <input required maxlength="255" type="text" name="address" value="{{ old('address', '') }}">
         @error('address')
             <div class="my-2 bg-danger text-white">
                 {{ $message }}
@@ -35,7 +38,7 @@
         {{-- OPEN LUNCH --}}
         <span>Lunch  </span>
         <label for="lunch_time_slot_open">Open:</label>
-        <input required maxlength="255" type="time" name="name" value="{{ old('lunch_time_slot_open', '') }}">
+        <input required maxlength="255" type="time" name="lunch_time_slot_open" value="{{ old('lunch_time_slot_open', '') }}">
         @error('lunch_time_slot_open')
             <div class="my-2 bg-danger text-white">
                 {{ $message }}
@@ -43,7 +46,7 @@
         @enderror
         {{-- CLOSE LUNCH --}}
         <label for="lunch_time_slot_close">Close:</label>
-        <input required maxlength="255" type="time" name="name" value="{{ old('lunch_time_slot_close', '') }}">
+        <input required maxlength="255" type="time" name="lunch_time_slot_close" value="{{ old('lunch_time_slot_close', '') }}">
         @error('lunch_time_slot_close')
             <div class="my-2 bg-danger text-white">
                 {{ $message }}
@@ -54,7 +57,7 @@
         {{-- OPEN DINNER --}}
         <span>Dinner  </span>
         <label for="dinner_time_slot_open">Open:</label>
-        <input required maxlength="255" type="time" name="name" value="{{ old('dinner_time_slot_open', '') }}">
+        <input required maxlength="255" type="time" name="dinner_time_slot_open" value="{{ old('dinner_time_slot_open', '') }}">
         @error('dinner_time_slot_open')
             <div class="my-2 bg-danger text-white">
                 {{ $message }}
@@ -62,7 +65,7 @@
         @enderror
         {{-- CLOSE DINNER --}}
         <label for="dinner_time_slot_close">Close:</label>
-        <input required maxlength="255" type="time" name="name" value="{{ old('dinner_time_slot_close', '') }}">
+        <input required maxlength="255" type="time" name="dinner_time_slot_close" value="{{ old('dinner_time_slot_close', '') }}">
         @error('dinner_time_slot_close')
             <div class="my-2 bg-danger text-white">
                 {{ $message }}
@@ -76,6 +79,8 @@
     <input type="submit" value="Create">
 </form>
 
+{{-- @else --}}
+
 @foreach ($restaurants as $item)
 
 @if ($item->user_id == $user->id) {
@@ -88,5 +93,5 @@
 
 
 @endforeach
-
+{{-- @endif --}}
 @endsection
