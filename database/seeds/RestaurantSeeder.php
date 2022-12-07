@@ -15,6 +15,31 @@ class RestaurantSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        //add here faker
+
+        for ($i = 0; $i < 10; $i++) {
+
+            $restaurant = new Restaurant();
+
+            $restaurant->name = $faker->unique()->company();
+
+            $slug = Str::slug($restaurant->name);
+            $slug_base = $slug;
+            $existingslug = Restaurant::where('slug', $slug)->first();
+            $counter = 1;
+            while ($existingslug) {
+                $slug = $slug_base . '_' . $counter;
+                $existingslug = Restaurant ::where('slug', $slug)->first();
+                $counter++;
+            }
+            $restaurant->slug = $slug;
+
+            $restaurant->address = $faker->address();
+            $restaurant->piva = $faker->numerify('###########');
+            $restaurant->lunch_time_slot = $faker->time();
+            $restaurant->dinner_time_slot = $faker->time();
+
+
+            $restaurant->save();
+        }
     }
 }
