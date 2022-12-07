@@ -15,6 +15,8 @@ class Restaurant extends Model
         'name', 'slug', 'img', 'address', 'piva', 'lunch_time_slot_open', 'lunch_time_slot_close', 'dinner_time_slot_open', 'dinner_time_slot_close', 'user_id'
     ];
 
-
+    public function dishes(){
+        return $this->hasMany('App\Dish');
+    }
 
 }
