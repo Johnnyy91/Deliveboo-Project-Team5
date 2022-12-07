@@ -88,7 +88,7 @@
     {{$item->name}}
     {{-- DELETE --}}
 
-    <div class="d-flex flex-column">
+    <div class="d-flex">
 
         <form class="mt-3" method="POST" action="{{ route('admin.restaurants.destroy', $item->slug) }}">
             @csrf
@@ -97,7 +97,14 @@
         </form>
 
         {{-- EDIT  --}}
-        <a class="btn btn-warning" href="{{ route('admin.restaurants.edit', $item->slug) }}">Edit Restaurant</a>
+        <a class="btn btn-warning my-3 mx-3" href="{{ route('admin.restaurants.edit', $item->slug) }}">Edit Restaurant</a>
+
+
+        {{-- ADD DISH--}}
+        <a class="btn btn-info my-3 mx-3" href="{{ route('admin.dishes.create') }}">Add Dish</a>
+
+        {{-- VIEW MENU'--}}
+        <a class="btn btn-info my-3 mx-3" href="{{ route('admin.dishes.index') }}">View Menù</a>
     </div>
 
 

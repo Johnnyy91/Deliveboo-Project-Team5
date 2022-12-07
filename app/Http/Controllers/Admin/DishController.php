@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use App\Dish;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class DishController extends Controller
 {
@@ -14,7 +17,8 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $dishes = Dish::all();
+        return view('admin.dishes.index', compact('dishes'));
     }
 
     /**
@@ -24,7 +28,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dishes.create');
     }
 
     /**
@@ -35,7 +39,18 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+
+        $dish = new dish();
+        $dish->fill($form_data);
+
+        $slug = $this->getSlug($dish->name);
+        $dish->slug = $slug;
+       // $dish->restaurant_id = ;
+        $dish->save();
+
+        return redirect()->route('admin.dishes.index');
+
     }
 
     /**
@@ -81,5 +96,21 @@ class DishController extends Controller
     public function destroy(Dish $dish)
     {
         //
+    }
+
+
+    private function getSlug($name)
+    {
+        $slug = Str::slug($name);
+        $slug_base = $slug;
+        // già pensato per più ristoranti
+        $existingdish = Dish::where('slug', $slug)->first();
+        $counter = 1;
+        while ($existingdish) {
+            $slug = $slug_base . '_' . $counter;
+            $counter++;
+            $existingdish = Dish::where('slug', $slug)->first();
+        }
+        return $slug;
     }
 }
