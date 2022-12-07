@@ -35,8 +35,10 @@ class RestaurantSeeder extends Seeder
 
             $restaurant->address = $faker->address();
             $restaurant->piva = $faker->numerify('###########');
-            $restaurant->lunch_time_slot = $faker->time();
-            $restaurant->dinner_time_slot = $faker->time();
+            $restaurant->lunch_time_slot_open = $faker->time();
+            $restaurant->lunch_time_slot_close = $faker->time();
+            $restaurant->dinner_time_slot_open = $faker->time();
+            $restaurant->dinner_time_slot_close = $faker->time();
 
 
             $restaurant->save();

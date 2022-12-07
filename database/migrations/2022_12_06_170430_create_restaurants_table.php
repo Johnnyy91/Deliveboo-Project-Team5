@@ -21,8 +21,10 @@ class CreateRestaurantsTable extends Migration
             $table->string('img')->nullable();
             $table->string('address')->unique();
             $table->string('piva', 11)->unique();
-            $table->time('lunch_time_slot');
-            $table->time('dinner_time_slot');
+            $table->time('lunch_time_slot_open');
+            $table->time('lunch_time_slot_close');
+            $table->time('dinner_time_slot_open');
+            $table->time('dinner_time_slot_close');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
