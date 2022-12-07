@@ -1,15 +1,13 @@
-@extends('layouts.app') <!--estendo layout.app-->
-
+@extends('layouts.app');
 
 @section('content')
-{{--  --}}
-{{-- TODO @if ($restaurants) --}}
 
-<form action="{{ route('admin.restaurants.store') }}" method="post">
+<form action="{{ route('admin.restaurants.update', $restaurant->slug) }}" method="post">
     @csrf
+    @method('PATCH')
     <div>
         <label for="name">Name:</label>
-        <input required maxlength="255" type="text" name="name" value="{{ old('name', '') }}">
+        <input required maxlength="255" type="text" name="name" value="{{ old('name', $restaurant->name) }}">
         @error('name')
             <div class="my-2 bg-danger text-white">
                 {{ $message }}
@@ -18,7 +16,7 @@
     </div>
     <div>
         <label for="p.iva">P.iva:</label>
-        <input required maxlength="255" type="text" name="piva" value="{{ old('piva', '') }}">
+        <input required maxlength="255" type="text" name="piva" value="{{ old('piva', $restaurant->piva) }}">
         @error('piva')
             <div class="my-2 bg-danger text-white">
                 {{ $message }}
@@ -79,28 +77,5 @@
     <input type="submit" value="Create">
 </form>
 
-{{-- @else --}}
 
-@foreach ($restaurants as $item)
-
-@if ($item->user_id == $user->id)
-
-    {{$item->name}}
-    {{-- DELETE --}}
-    <form class="mt-3" method="POST" action="{{ route('admin.restaurants.destroy', $item->slug) }}">
-        @csrf
-        @method('DELETE')
-        <input onclick="return confirm('Do you really want to delete this restaurant?')" type="submit" value="Delete">
-    </form>
-
-    {{-- EDIT  --}}
-    <a href="{{ route('admin.restaurants.edit', $item->slug) }}">Edit Restaurant</a>
-
-
-@endif
-
-
-
-@endforeach
-{{-- @endif --}}
 @endsection

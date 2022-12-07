@@ -76,10 +76,16 @@ class RestaurantController extends Controller
      * @param  \App\Restaurant  $restaurant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Restaurant $restaurant)
+    public function edit($slug)
     {
         //
+        $restaurant = Restaurant::where('slug', $slug)->first();
+        return view('admin.restaurants.edit', compact('restaurant'));
+
+
+
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -90,7 +96,15 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $this->validateRestaurant($request);
+        $form_data = $request->all();
+         //qui aggiorniamo lo slug se il nome è diverso
+        if ($restaurant->name != $form_data['name']) {
+            $slug = $this->getSlug($form_data['name']);
+            $form_data['slug'] = $slug;
+        }
+        $restaurant->update($form_data);
+        return redirect()->route('admin.restaurants.index');
     }
 
     /**
