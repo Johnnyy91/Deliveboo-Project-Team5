@@ -87,14 +87,19 @@
 
     {{$item->name}}
     {{-- DELETE --}}
-    <form class="mt-3" method="POST" action="{{ route('admin.restaurants.destroy', $item->slug) }}">
-        @csrf
-        @method('DELETE')
-        <input onclick="return confirm('Do you really want to delete this restaurant?')" type="submit" value="Delete">
-    </form>
 
-    {{-- EDIT  --}}
-    <a href="{{ route('admin.restaurants.edit', $item->slug) }}">Edit Restaurant</a>
+    <div class="d-flex flex-column">
+
+        <form class="mt-3" method="POST" action="{{ route('admin.restaurants.destroy', $item->slug) }}">
+            @csrf
+            @method('DELETE')
+            <input class="btn btn-success mb-3"onclick="return confirm('Do you really want to delete this restaurant?')" type="submit" value="Delete">
+        </form>
+
+        {{-- EDIT  --}}
+        <a class="btn btn-warning" href="{{ route('admin.restaurants.edit', $item->slug) }}">Edit Restaurant</a>
+    </div>
+
 
 
 @endif
