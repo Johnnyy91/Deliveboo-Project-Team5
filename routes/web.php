@@ -20,17 +20,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+
 Route::middleware('auth')  //si collega alla cartella middleware
     ->namespace('Admin')  //controller inseriti in sottocartella Admin
     ->name('admin.')      //name delle rotte che iniziano con admin.  //cartella admin dove dentro ci sono i file
     ->prefix('admin')
     ->group(function () {
-        Route::get('/', 'HomeController@index')->name('index'); // rotta se utente autenticato
+        Route::get('/restaurants', 'RestaurantController@index')->name('index'); // rotta se utente autenticato
     });
 
-    Route::get('{any?}', function() {  // per qualsiasi altra rotta mandami in guest.home
-    return view("guest.home");
-})->where("any", ".*");
+  //  Route::get('{any?}', function() {  // per qualsiasi altra rotta mandami in guest.home
+//    return view("guest.home");
+// })->where("any", ".*");
 
 
 

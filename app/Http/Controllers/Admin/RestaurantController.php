@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\Admin;
 use App\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class RestaurantController extends Controller
 {
@@ -14,7 +16,11 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+
+
+        $user = Auth::user();
+        $restaurants = Restaurant::all();
+        return view('admin.restaurants.index', compact(['restaurants','user']));
     }
 
     /**
