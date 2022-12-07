@@ -83,10 +83,18 @@
 
 @foreach ($restaurants as $item)
 
-@if ($item->user_id == $user->id) {
+@if ($item->user_id == $user->id)
 
-   {{$item->name}}
-}
+    {{$item->name}}
+    {{-- DELETE --}}
+    <form class="mt-3" method="POST" action="{{ route('admin.restaurants.destroy', $item->slug) }}">
+        @csrf
+        @method('DELETE')
+        <input onclick="return confirm('Do you really want to delete this restaurant?')" type="submit" value="Delete">
+    </form>
+
+
+
 
 @endif
 
