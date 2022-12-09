@@ -19,4 +19,7 @@ class Restaurant extends Model
         return $this->hasMany('App\Dish');
     }
 
+    public function typologies()  {
+        return $this->belongsToMany('App\Typology');
+    }
 }
