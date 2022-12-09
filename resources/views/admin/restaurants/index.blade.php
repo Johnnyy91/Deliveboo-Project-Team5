@@ -92,7 +92,17 @@
 
 @if ($item->user_id == $user->id)
 
-    {{$item->name}}
+
+
+nome ristorante:  {{$item->name}}
+<div>
+    Tipologie:
+    @foreach ($item->typologies as $typology)
+        {{$typology->name}}
+    @endforeach
+</div>
+
+
     {{-- DELETE --}}
 
     <div class="d-flex">
