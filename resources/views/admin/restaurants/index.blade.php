@@ -2,8 +2,15 @@
 
 
 @section('content')
-{{--  --}}
-{{-- TODO @if ($restaurants) --}}
+
+<?php $val = false ?>
+@foreach ($restaurants as $item)
+@if ($item->user_id == $user->id)
+    <?php $val = true ?>
+@endif
+@endforeach
+
+@if (!$val)
 
 <form action="{{ route('admin.restaurants.store') }}" method="post">
     @csrf
@@ -79,7 +86,7 @@
     <input type="submit" value="Create">
 </form>
 
-{{-- @else --}}
+ @else
 
 @foreach ($restaurants as $item)
 
@@ -114,5 +121,5 @@
 
 
 @endforeach
-{{-- @endif --}}
+ @endif
 @endsection
