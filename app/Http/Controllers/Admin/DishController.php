@@ -44,12 +44,14 @@ class DishController extends Controller
     {
         $form_data = $request->all();
 
-        $dish = new dish();
+        $dish = new Dish();
         $dish->fill($form_data);
 
         $slug = $this->getSlug($dish->name);
         $dish->slug = $slug;
-       // $dish->restaurant_id = ;
+        $user = Auth::user();
+        $restaurant = Restaurant::where('user_id', $user->id)->first();
+        $dish->restaurant_id = $restaurant->id;
         $dish->save();
 
         return redirect()->route('admin.dishes.index');
