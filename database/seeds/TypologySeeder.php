@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+use App\Typology;
 
 class TypologySeeder extends Seeder
 {
@@ -11,6 +13,12 @@ class TypologySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $typologies = ['pizzeria','italiana','cinese','giapponese', 'thailandese', 'messicano', 'fast food'];
+        foreach($typologies as $model){
+            $typology = new typology();
+            $typology->name = $model;
+            $typology->slug = Str::slug($typology->name);
+            $typology->save();
+        }
     }
 }
