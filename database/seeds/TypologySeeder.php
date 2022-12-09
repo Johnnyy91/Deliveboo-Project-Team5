@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use App\Typology;
+use App\Restaurant;
+use App\User;
 
 class TypologySeeder extends Seeder
 {
