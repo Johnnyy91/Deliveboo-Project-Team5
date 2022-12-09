@@ -7,6 +7,7 @@ use App\Dish;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use App\Restaurant;
 
 class DishController extends Controller
 {
@@ -17,7 +18,9 @@ class DishController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::all();
+        $user = Auth::user();
+        $restaurant = Restaurant::where('user_id', $user->id)->first();
+        $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
         return view('admin.dishes.index', compact('dishes'));
     }
 
