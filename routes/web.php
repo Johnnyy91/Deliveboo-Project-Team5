@@ -31,6 +31,7 @@ Route::middleware('auth')  //si collega alla cartella middleware
         // andiamo a connetterci al controller CRUD associato ai restaurants
         Route::resource('restaurants', 'RestaurantController')->parameters(['restaurants'=>'restaurant:slug']);
         Route::resource('dishes', 'DishController');
+
     });
 
    Route::get('{any?}', function() {  // per qualsiasi altra rotta mandami in guest.home

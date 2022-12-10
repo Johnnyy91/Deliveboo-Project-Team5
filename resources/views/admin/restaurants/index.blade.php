@@ -83,6 +83,17 @@
         <label for="image">Image:</label>
         <input type="file" name="image" disabled>
     </div>
+
+
+    <label for="typology_id">Typology:</label>
+    <select name="typology_id" id="">
+    @foreach ($typologies as $typology )
+        <option value="{{$typology->id}}">{{$typology->name}}</option>
+    @endforeach
+    </select>
+
+
+
     <input type="submit" value="Create">
 </form>
 
