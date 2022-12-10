@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
-// use App\Typology; --------> per lo store
+use App\Typology;
 
 class RestaurantController extends Controller
 {
@@ -22,7 +22,8 @@ class RestaurantController extends Controller
 
         $user = Auth::user();
         $restaurants = Restaurant::all();
-        return view('admin.restaurants.index', compact(['restaurants','user']));
+        $typologies = Typology::all();
+        return view('admin.restaurants.index', compact(['restaurants','user','typologies']));
     }
 
     /**
@@ -32,7 +33,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        $typologies=Typology::All();
+        return view('admin.restaurants.create', compact('typologies'));
     }
 
     /**
