@@ -111,6 +111,11 @@ class RestaurantController extends Controller
             $slug = $this->getSlug($form_data['name']);
             $form_data['slug'] = $slug;
         }
+        if(array_key_exists('typologies', $form_data)){
+            $restaurant->typologies()->sync($form_data['typologies']);
+        }else{
+            $restaurant->typologies()->sync([]);
+        }
         $restaurant->update($form_data);
         return redirect()->route('admin.restaurants.index');
     }
