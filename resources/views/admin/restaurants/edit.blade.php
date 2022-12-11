@@ -70,10 +70,32 @@
             </div>
         @enderror
     </div>
+
     <div>
         <label for="image">Image:</label>
         <input type="file" name="image" disabled>
     </div>
+
+    @if ($errors->any())
+    <label for="typology_id">Typology:</label>
+    <select name="typologies[]" id="typology_id" multiple>
+    @foreach ($typologies as $typology )
+        <option {{ in_array($typology->id, old('typology', [])) ? 'selected' : '' }}
+        value="{{$typology->id}}">{{$typology->name}}</option>
+    @endforeach
+    </select>
+
+    @else
+    <label for="typology_id">Typology:</label>
+    <select name="typologies[]" id="typology_id" multiple>
+    @foreach ($typologies as $typology )
+        <option {{ $restaurant->typologies->contains($typology) ? 'selected' : '' }}
+        value="{{$typology->id}}">{{$typology->name}}</option>
+    @endforeach
+    </select>
+
+    @endif
+
     <input type="submit" value="Create">
 </form>
 
