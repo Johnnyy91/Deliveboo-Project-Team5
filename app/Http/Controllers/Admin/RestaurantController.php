@@ -87,7 +87,8 @@ class RestaurantController extends Controller
     {
         //
         $restaurant = Restaurant::where('slug', $slug)->first();
-        return view('admin.restaurants.edit', compact('restaurant'));
+        $typologies = Typology::all();
+        return view('admin.restaurants.edit', compact('restaurant', 'typologies'));
 
 
 
