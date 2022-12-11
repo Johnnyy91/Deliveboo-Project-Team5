@@ -19,7 +19,7 @@
     {{-- P.IVA --}}
     <div>
         <label for="p.iva">P.iva:</label>
-        <input required maxlength="11" type="text" name="piva" value="{{ old('piva', $restaurant->piva) }}">
+        <input required pattern="[0-9]{11}" type="text" name="piva" value="{{ old('piva', $restaurant->piva) }}">
         @error('piva')
             <div class="my-2 bg-danger text-white">
                 {{ $message }}
