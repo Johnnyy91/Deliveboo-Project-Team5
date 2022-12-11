@@ -58,6 +58,10 @@ class RestaurantController extends Controller
         $restaurant->user_id = $user->id;
         $restaurant->save();
 
+        if(array_key_exists('typologies', $form_data)){
+            $restaurant->typologies()->sync($form_data['typologies']);
+        }
+
         return redirect()->route('admin.restaurants.index');
 
     }
