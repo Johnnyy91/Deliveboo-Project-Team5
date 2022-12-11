@@ -86,9 +86,10 @@
 
 
     <label for="typology_id">Typology:</label>
-    <select name="typologies[]" id="typology_id">
+    <select name="typologies[]" id="typology_id" multiple>
     @foreach ($typologies as $typology )
-        <option value="{{$typology->id}}">{{$typology->name}}</option>
+        <option   {{ in_array($typology->id, old('typology', [])) ? 'selected' : '' }}
+         value="{{$typology->id}}">{{$typology->name}}</option>
     @endforeach
     </select>
 
