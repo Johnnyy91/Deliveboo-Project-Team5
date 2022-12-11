@@ -96,7 +96,7 @@
 
     @endif
 
-    <input type="submit" value="Create">
+    <input type="submit" value="Update">
 </form>
 
 
