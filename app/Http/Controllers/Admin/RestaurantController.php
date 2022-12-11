@@ -122,6 +122,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+        $restaurant->typologies()->sync([]);
         $restaurant->delete();
         return redirect()->route('admin.restaurants.index');
     }
