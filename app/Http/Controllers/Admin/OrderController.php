@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Order;
+use App\Restaurant;
+use App\Dish;
 use Illuminate\Http\Request;
+
 
 class OrderController extends Controller
 {
@@ -16,6 +20,9 @@ class OrderController extends Controller
     public function index()
     {
         //
+        $total_price = '5';
+
+        return view('admin.orders.index', compact('total_price'));
     }
 
     /**
