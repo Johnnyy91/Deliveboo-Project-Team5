@@ -91,6 +91,14 @@ class DishController extends Controller
     public function update(Request $request, Dish $dish)
     {
         //
+        $form_data = $request->all();
+        if ($dish->name != $form_data['name']) {
+            $slug = $this->getSlug($form_data['name']);
+            $form_data['slug'] = $slug;
+        }
+
+        $dish->update($form_data);
+        return redirect()->route('admin.dishes.index');
     }
 
     /**
