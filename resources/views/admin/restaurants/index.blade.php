@@ -154,5 +154,10 @@ nome ristorante:  {{$item->name}}
 
 
 @endforeach
- @endif
+@endif
+
+{{-- ORDINI --}}
+
+@include('admin.orders.index')
+
 @endsection
