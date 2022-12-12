@@ -145,6 +145,10 @@ nome ristorante:  {{$item->name}}
 
         {{-- VIEW MENU'--}}
         <a class="btn btn-info my-3 mx-3" href="{{ route('admin.dishes.index') }}">View Menù</a>
+
+        {{-- VIEW ORDERS --}}
+        <a class="btn btn-info my-3 mx-3" href="{{ route('admin.orders.index') }}">View orders</a>
+
     </div>
 
 
@@ -155,9 +159,5 @@ nome ristorante:  {{$item->name}}
 
 @endforeach
 @endif
-
-{{-- ORDINI --}}
-
-@include('admin.orders.index')
 
 @endsection
