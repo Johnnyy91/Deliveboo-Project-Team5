@@ -20,9 +20,12 @@ class OrderController extends Controller
     public function index()
     {
         //
-        $total_price = '5';
 
-        return view('admin.orders.index', compact('total_price'));
+        $user = Auth::user();
+        $restaurant = Restaurant::where('user_id', $user->id)->first();
+        $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
+        $orders = Order::all();
+        return view('admin.orders.index', compact('orders', 'dishes'));
     }
 
     /**
