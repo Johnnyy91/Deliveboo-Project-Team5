@@ -14,8 +14,11 @@ class CreateDishOrderTable extends Migration
     public function up()
     {
         Schema::create('dish_order', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('dish_id')->nullable();
+            $table->foreign('dish_id')->references('id')->on('dishes');
+            $table->unsignedBigInteger('order_id')->nullable();
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->primary(['dish_id', 'order_id']); // Sfruttiamo gli indici come chiavi primarie
         });
     }
 
