@@ -13,6 +13,8 @@
         <input class="btn btn-success mb-3"onclick="return confirm('Do you really want to delete this dish?')" type="submit" value="Delete">
     </form>
 
+     {{-- EDIT  --}}
+        <div><a class="btn btn-warning my-3 mx-3" href="{{ route('admin.dishes.edit', $item->id) }}">Edit Dishes</a></div>
 
 
 @endforeach
