@@ -15,10 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            // $table->decimal('total_price',5,2)->unsigned(); IL PREZZO TOTALE DOVREBBE ESSERE DATO DALLA SOMMA DEI PIATTI ORDINATI
             $table->string('address_client')->unique();
             $table->string('email_client')->unique();
-            $table->timestamps('date_order');
+            $table->timestamp('date_order'); // alternativa datatime (meno preciso)
+            $table->timestamps();
         });
     }
 
