@@ -18,7 +18,6 @@ class CreateDishOrderTable extends Migration
             $table->foreign('dish_id')->references('id')->on('dishes');
             $table->unsignedBigInteger('order_id')->nullable();
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->primary(['dish_id', 'order_id']); // Sfruttiamo gli indici come chiavi primarie
         });
     }
 
