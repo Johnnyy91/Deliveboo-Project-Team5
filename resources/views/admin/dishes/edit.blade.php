@@ -2,7 +2,7 @@
 
 
 @section('content')
-<form action="{{ route('admin.dishes.update') }}" method="post">
+<form action="{{ route('admin.dishes.update', $dish) }}" method="post">
     @csrf
     @method('PATCH')
     <div>
