@@ -92,7 +92,7 @@
     {{-- IMAGE --}}
     <div>
         <label for="image">Image:</label>
-        <input type="file" name="image" disabled>
+        <input type="file" name="image">
     </div>
 
     {{-- TYOPOLOGIES --}}
@@ -123,6 +123,9 @@ nome ristorante:  {{$item->name}}
     @foreach ($item->typologies as $typology)
         {{$typology->name}}
     @endforeach
+</div>
+<div class="w-100">
+    <img class="w-25" src="{{asset('storage/'.$item->img)}}" alt="img">
 </div>
 
 
