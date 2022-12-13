@@ -118,13 +118,14 @@ class RestaurantController extends Controller
             $restaurant->typologies()->sync([]);
         }
 
-    //     if(array_key_exists('img', $form_data)){
+        if(array_key_exists('image', $form_data)){
+        //img_restaurant è la cartella dove carichiamo l'immagine, nel form_data mettiamo il nome dell'attributo name messo sul'input
+	    $img = Storage::put('img_restaurant', $form_data['image']);
+        //dd($img)
+        //salviamo l'elemento importato dal form_data convertito in stringa come valore della proprietà img
+	    $form_data['img'] = $img;
 
-	//     $img = Storage::put('img', $form_data['img']);
-
-	//     $form_data['img'] = $img;
-
-	// }
+        }
         $restaurant->update($form_data);
 
         return redirect()->route('admin.restaurants.index');
