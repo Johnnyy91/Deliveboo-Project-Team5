@@ -8,6 +8,7 @@ use App\Order;
 use App\Restaurant;
 use App\Dish;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class OrderController extends Controller
@@ -24,8 +25,17 @@ class OrderController extends Controller
         $user = Auth::user();
         $restaurant = Restaurant::where('user_id', $user->id)->first();
         $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
-        $orders = Order::all();
-        return view('admin.orders.index', compact('orders', 'dishes'));
+        //temporany
+        $query  = DB::table('users')
+        ->join('restaurants', 'users.id', '=', 'restaurants.user_id')
+        ->join('dishes', 'restaurants.id', '=', 'dishes.restaurant_id')
+        ->join('dish_order', 'dishes.id', '=', 'dish_order.dish_id')
+        ->join('orders', 'orders.id', '=', 'dish_order.order_id')
+        ->select('orders.*')
+        ->where('user_id', $user->id)
+        ->groupBy('orders.id')
+        ->get();
+        return view('admin.orders.index', compact('query'));
     }
 
     /**
