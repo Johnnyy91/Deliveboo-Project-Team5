@@ -56,7 +56,7 @@
 
     <div>
         <label for="image">Image:</label>
-        <input type="file" name="image" disabled>
+        <input type="file" name="image">
     </div>
     <input type="submit" value="Create">
 </form>
