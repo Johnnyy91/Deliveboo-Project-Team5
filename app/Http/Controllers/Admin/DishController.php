@@ -46,6 +46,14 @@ class DishController extends Controller
         $form_data = $request->all();
 
         $dish = new Dish();
+
+        if(array_key_exists('image', $form_data)){
+            //img_restaurant è la cartella dove carichiamo l'immagine, nel form_data mettiamo il nome dell'attributo name messo sul'input
+            $img = Storage::put('img_dish', $form_data['image']);
+            //salviamo l'elemento importato dal form_data convertito in stringa come valore della proprietà img
+            $form_data['img'] = $img;
+
+            }
         $dish->fill($form_data);
 
         $slug = $this->getSlug($dish->name);
@@ -55,14 +63,7 @@ class DishController extends Controller
         $dish->restaurant_id = $restaurant->id;
 
 
-        if(array_key_exists('image', $form_data)){
-        //img_restaurant è la cartella dove carichiamo l'immagine, nel form_data mettiamo il nome dell'attributo name messo sul'input
-	    $img = Storage::put('img_dish', $form_data['image']);
-        //dd($img)
-        //salviamo l'elemento importato dal form_data convertito in stringa come valore della proprietà img
-	    $form_data['img'] = $img;
 
-        }
          $dish->save();
 
         return redirect()->route('admin.dishes.index');
@@ -133,10 +134,13 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+
+        if ($dish->img) {  //prima controllo se ha img
+            Storage::delete($dish->img);
+        }
+        $dish->orders()->sync([]); //relazione tra piatti e ordini vuota, nessuna relazione
         $dish->delete();
-        if ($dish->img) {
-                Storage::delete($dish->img);
-            }
+
         return redirect()->route('admin.restaurants.index');
     }
 
