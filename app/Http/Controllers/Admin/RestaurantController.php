@@ -57,7 +57,7 @@ class RestaurantController extends Controller
         $restaurant->slug = $slug;
         $user = Auth::user();
         $restaurant->user_id = $user->id;
-        $restaurant->save();
+
 
         if(array_key_exists('typologies', $form_data)){
             $restaurant->typologies()->sync($form_data['typologies']);
@@ -71,6 +71,7 @@ class RestaurantController extends Controller
 	    $form_data['img'] = $img;
 
         }
+        $restaurant->save();
 
         return redirect()->route('admin.restaurants.index');
 
