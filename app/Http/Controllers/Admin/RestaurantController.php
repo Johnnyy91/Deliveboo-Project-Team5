@@ -50,6 +50,15 @@ class RestaurantController extends Controller
         $this->validateRestaurant($request);
         $form_data = $request->all();
 
+        if(array_key_exists('image', $form_data)){
+            //img_restaurant è la cartella dove carichiamo l'immagine, nel form_data mettiamo il nome dell'attributo name messo sul'input
+            $img = Storage::put('img_restaurant', $form_data['image']);
+            //dd($img)
+            //salviamo l'elemento importato dal form_data convertito in stringa come valore della proprietà img
+            $form_data['img'] = $img;
+
+            }
+
         $restaurant = new Restaurant();
         $restaurant->fill($form_data);
 
@@ -59,19 +68,13 @@ class RestaurantController extends Controller
         $restaurant->user_id = $user->id;
 
 
+
+
+        $restaurant->save();
+
         if(array_key_exists('typologies', $form_data)){
             $restaurant->typologies()->sync($form_data['typologies']);
         }
-
-        if(array_key_exists('image', $form_data)){
-        //img_restaurant è la cartella dove carichiamo l'immagine, nel form_data mettiamo il nome dell'attributo name messo sul'input
-	    $img = Storage::put('img_restaurant', $form_data['image']);
-        //dd($img)
-        //salviamo l'elemento importato dal form_data convertito in stringa come valore della proprietà img
-	    $form_data['img'] = $img;
-
-        }
-        $restaurant->save();
 
         return redirect()->route('admin.restaurants.index');
 
