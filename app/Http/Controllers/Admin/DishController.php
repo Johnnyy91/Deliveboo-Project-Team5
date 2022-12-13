@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Restaurant;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -52,7 +53,17 @@ class DishController extends Controller
         $user = Auth::user();
         $restaurant = Restaurant::where('user_id', $user->id)->first();
         $dish->restaurant_id = $restaurant->id;
-        $dish->save();
+
+
+        if(array_key_exists('image', $form_data)){
+        //img_restaurant è la cartella dove carichiamo l'immagine, nel form_data mettiamo il nome dell'attributo name messo sul'input
+	    $img = Storage::put('img_dish', $form_data['image']);
+        //dd($img)
+        //salviamo l'elemento importato dal form_data convertito in stringa come valore della proprietà img
+	    $form_data['img'] = $img;
+
+        }
+         $dish->save();
 
         return redirect()->route('admin.dishes.index');
 
@@ -97,6 +108,19 @@ class DishController extends Controller
             $form_data['slug'] = $slug;
         }
 
+
+         if(array_key_exists('image', $form_data)){
+            if ($dish->img) {
+                Storage::delete($dish->img);
+            }
+        //img_restaurant è la cartella dove carichiamo l'immagine, nel form_data mettiamo il nome dell'attributo name messo sul'input
+	    $img = Storage::put('img_dish', $form_data['image']);
+        //dd($img)
+        //salviamo l'elemento importato dal form_data convertito in stringa come valore della proprietà img
+	    $form_data['img'] = $img;
+
+        }
+
         $dish->update($form_data);
         return redirect()->route('admin.dishes.index');
     }
@@ -110,6 +134,9 @@ class DishController extends Controller
     public function destroy(Dish $dish)
     {
         $dish->delete();
+        if ($dish->img) {
+                Storage::delete($dish->img);
+            }
         return redirect()->route('admin.restaurants.index');
     }
 
