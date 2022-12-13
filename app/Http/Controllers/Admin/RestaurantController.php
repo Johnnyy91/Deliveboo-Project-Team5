@@ -63,6 +63,15 @@ class RestaurantController extends Controller
             $restaurant->typologies()->sync($form_data['typologies']);
         }
 
+        if(array_key_exists('image', $form_data)){
+        //img_restaurant è la cartella dove carichiamo l'immagine, nel form_data mettiamo il nome dell'attributo name messo sul'input
+	    $img = Storage::put('img_restaurant', $form_data['image']);
+        //dd($img)
+        //salviamo l'elemento importato dal form_data convertito in stringa come valore della proprietà img
+	    $form_data['img'] = $img;
+
+        }
+
         return redirect()->route('admin.restaurants.index');
 
     }
@@ -119,6 +128,9 @@ class RestaurantController extends Controller
         }
 
         if(array_key_exists('image', $form_data)){
+            if ($restaurant->img) {
+                Storage::delete($restaurant->img);
+            }
         //img_restaurant è la cartella dove carichiamo l'immagine, nel form_data mettiamo il nome dell'attributo name messo sul'input
 	    $img = Storage::put('img_restaurant', $form_data['image']);
         //dd($img)
@@ -143,6 +155,9 @@ class RestaurantController extends Controller
     {
         $restaurant->typologies()->sync([]);
         $restaurant->delete();
+        if ($restaurant->img) {
+                Storage::delete($restaurant->img);
+            }
         return redirect()->route('admin.restaurants.index');
     }
     private function getSlug($name)
