@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Typology;
+use App\Dish;
+use App\Order;
 use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
@@ -157,6 +159,13 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+        // $dish = $restaurant->dishes()->get();
+        $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
+        foreach ($dishes as $dish) {
+            $dish->orders()->sync([]);
+            $dish->delete();
+        } // l'ordine associato al ristorante non viene neancora eliminato
+        // dd($dishes);
         $restaurant->typologies()->sync([]);
         $restaurant->delete();
         if ($restaurant->img) {
