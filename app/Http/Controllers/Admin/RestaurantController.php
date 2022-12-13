@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Typology;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -116,8 +117,19 @@ class RestaurantController extends Controller
         }else{
             $restaurant->typologies()->sync([]);
         }
+
+    //     if(array_key_exists('img', $form_data)){
+
+	//     $img = Storage::put('img', $form_data['img']);
+
+	//     $form_data['img'] = $img;
+
+	// }
         $restaurant->update($form_data);
+
         return redirect()->route('admin.restaurants.index');
+
+
     }
 
     /**
