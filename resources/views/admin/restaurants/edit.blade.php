@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- FORM UPDATE RESTAURANT --}}
-<form action="{{ route('admin.restaurants.update', $restaurant->slug) }}" method="post">
+<form action="{{ route('admin.restaurants.update', $restaurant->slug) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
      {{-- NAME --}}
@@ -78,7 +78,7 @@
     {{-- IMAGE --}}
     <div>
         <label for="image">Image:</label>
-        <input type="file" name="image" disabled>
+        <input type="file" name="image">
     </div>
     {{-- TYPOLOGIES --}}
     @if ($errors->any())

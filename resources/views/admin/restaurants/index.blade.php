@@ -13,7 +13,7 @@
 
 {{-- CREATE --}}
 @if (!$val)
-<form action="{{ route('admin.restaurants.store') }}" method="post">
+<form action="{{ route('admin.restaurants.store') }}" method="post" enctype="multipart/form-data">
     @csrf
 
     {{-- NAME --}}
