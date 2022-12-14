@@ -16,3 +16,4 @@ class Dish extends Model
     protected $fillable = [ 'name', 'slug', 'description', 'ingredients', 'img', 'price', 'restaurant_id'];
 
 }
+//pao
