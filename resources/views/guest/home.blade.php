@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
     <script src="{{ asset('js/front.js')}}" defer></script>
-    <title>Home</title>
+    <title>DeliveBoo</title>
 
 </head>
 <body>

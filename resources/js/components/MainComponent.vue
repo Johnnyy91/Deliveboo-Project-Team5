@@ -1,26 +1,19 @@
 <template>
-
-    <div class="restaurant">
-        <div class="typologies">
-
-            <div v-for="item in typologies" :key="item.id">
-                <button @click="showtipology($event)" :value="item.id" class="text-capitalize"> {{item.name}}</button>
+    <main>
+        <section class="container">
+            <div class="fl-typologies d-flex mb-5 justify-content-between">
+                <div v-for="item in typologies" :key="item.id">
+                    <button @click="showtipology($event)" :value="item.id" type="button" class="btn btn-lg fl-button text-capitalize"> {{item.name}}</button>
+                </div>
             </div>
-
-
-
-        </div>
-
-        <div>
-            <h1>Ristoranti:</h1>
-            <div v-for="item in restaurants" :key="item.id">
-                {{item.name}}
+            <div>
+                <h1>Ristoranti:</h1>
+                <div v-for="item in restaurants" :key="item.id">
+                    {{item.name}}
+                </div>
             </div>
-        </div>
-
-
-    </div>
-
+        </section>
+    </main>
 </template>
 
 <script>
@@ -84,8 +77,34 @@
 
 @import '../../sass/app.scss';
 
-.typologies {
-    display: flex;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+section {
+    height: 25vh;
+    margin-top: 30vh;
+
+    h1 {
+        color: $fl-primary;
+        font-family: 'Kanit', sans-serif;
+        font-weight: 400;
+    }
+
+    .fl-button {
+        background-color: $fl-primary;
+        color: $fl-blank;
+    }
+
+    .fl-typologies {
+        width: 100%;
+    }
+}
+
+
+
+
 
 </style>
