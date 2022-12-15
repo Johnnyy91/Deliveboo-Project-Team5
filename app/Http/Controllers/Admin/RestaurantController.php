@@ -159,8 +159,8 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        // $dish = $restaurant->dishes()->get();
-        $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
+        $dishes = $restaurant->dishes()->get();
+        // $dishes = Dish::where('restaurant_id', $restaurant->id)->get();
         foreach ($dishes as $dish) {
             $dish->orders()->sync([]);
             $dish->delete();
