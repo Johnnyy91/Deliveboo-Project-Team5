@@ -1,6 +1,7 @@
 <template>
 
     <div>
+
     </div>
 
 </template>
@@ -8,7 +9,7 @@
 <script>
 
     export default {
-    name:'HeaderComponent',
+    name:'HeroComponent',
     }
 
 </script>

@@ -8,7 +8,7 @@
 <script>
 
     export default {
-    name:'HeaderComponent',
+    name:'FooterComponent',
     }
 
 </script>
@@ -16,6 +16,5 @@
 <style lang="scss" scoped>
 
 @import '../../sass/app.scss';
-
 
 </style>
