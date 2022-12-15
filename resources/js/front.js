@@ -10,7 +10,7 @@ import App from './views/App'
  window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
- Vue.component('HeaderComponent', require('./components/HeaderComponent.vue').default);
+
 
 
 

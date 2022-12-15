@@ -25,7 +25,25 @@ class FrontendController extends Controller{
 
         }
 
-        return response()->json($data);
+        return response($data);
+
+
+    }
+
+
+    public function show($id) {
+         $typologies = Typology::all();
+         $data = [];
+         foreach($typologies as $typology){
+         if ($typology->id == $id){
+           foreach($typology->restaurants as $item){
+               array_push($data,$item);
+           }
+         }
+        }
+
+
+            return response($data);
 
 
     }
