@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::resource('/home', 'api\FrontendController'); // abilito il controller api
+Route::resource('restaurant', 'api\FrontendController'); // abilito il controller api
+//Route::get('/restaurants/{id}','api\FrontendController@show');
+Route::get('test', function(){return response('ciao');});
