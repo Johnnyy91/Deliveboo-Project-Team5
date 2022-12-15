@@ -1,20 +1,20 @@
 <template>
     <div>
-        <form action="{{ route('admin.order.store') }}" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data">
 
             <!-- TOKEN CSRF -->
-            <input type="hidden" name="_token" v-bind:value="csrf">
+            <!-- <input type="hidden" name="_token" v-bind:value="csrf"> -->
 
             <!-- EMAIL -->
             <label for="email">Email Client</label>
-            <input type="email" id="email" name="email_client" >
+            <input v-model="email" type="email" id="email" name="email_client" >
 
             <!-- ADDRESS -->
             <label for="address">Address Client</label>
-            <input type="text" id="address" name="address_client">
+            <input v-model="address" type="text" id="address" name="address_client">
 
 
-            <input type="submit" value="Send">
+            <input type="button" @click="clicked()" value="Send">
 
 
         </form>
@@ -26,10 +26,20 @@ export default {
     data(){
           return {
             //csrf token
-             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-       }
-    }
+            //  csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
 
+            address:undefined,
+            email:undefined
+       }
+    },
+
+    methods: {
+        clicked(){
+            console.log(this.email)
+            console.log(this.address)
+
+        }
+    },
 }
 </script>
 <style lang="">
