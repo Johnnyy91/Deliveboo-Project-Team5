@@ -4,8 +4,10 @@
 
     <div class="restaurant">
         <div class="typologies">
+
             <div v-for="item in typologies" :key="item.id">
-            <button > {{item.name}}</button>
+
+            <button @click="showtipology($event)" :value="item.id"> {{item.name}}</button>
             </div>
 
 
@@ -39,7 +41,7 @@ data(){
 },
 
 methods: {
-    ShowRestaurant(url) {
+    showRestaurant(url) {
         axios.get(url).then(({data})=>{
             this.restaurants = data.results;
             this.typologies = data.typologies;
@@ -49,9 +51,35 @@ methods: {
         })
     },
 
+    showtype(url){
+        axios.get(url).then(({data})=>{
+            console.log(url);
+            console.log(data)
+        }
+        )
+    },
+
+
+    showtipology(e){
+        let id = e.target.value;
+        this.$router.push({path:'/' + id })
+        this.showtype('api/restaurant/' + id);
+        console.log(id);
+    },
+
 },
+
+
 mounted() {
-     this.ShowRestaurant('api/home');
+    this.showRestaurant('api/restaurant')
+        // axios.get('api/restaurant').then(({data})=>{
+        //     this.restaurants = data.results;
+        //     this.typologies = data.typologies;
+        //     console.log(data.results);
+
+
+        // })
+
 
 }
 }
