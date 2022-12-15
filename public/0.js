@@ -43,7 +43,7 @@ var render = function render() {
   return _c("div", _vm._l(_vm.restaurant, function (item) {
     return _c("div", {
       key: item.id
-    }, [_c("h1", [_vm._v(_vm._s(item.name))])]);
+    }, [_c("h1", [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c("h1", [_vm._v("Indirizzo:")]), _vm._v(" "), _c("h2", [_vm._v(_vm._s(item.address))]), _vm._v(" "), _c("h1", [_vm._v("Orario Pranzo:")]), _vm._v(" "), _c("h2", [_vm._v(_vm._s(item.lunch_time_slot_open))]), _vm._v(" "), _c("h2", [_vm._v(_vm._s(item.lunch_time_slot_close))]), _vm._v(" "), _c("h1", [_vm._v("Orario Cena:")]), _vm._v(" "), _c("h2", [_vm._v(_vm._s(item.dinner_time_slot_open))]), _vm._v(" "), _c("h2", [_vm._v(_vm._s(item.dinner_time_slot_close))])]);
   }), 0);
 };
 var staticRenderFns = [];
