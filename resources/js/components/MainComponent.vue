@@ -1,93 +1,110 @@
 <template>
-
-
-
-    <div class="restaurant">
-        <div class="typologies">
-
-            <div v-for="item in typologies" :key="item.id">
-
-            <button @click="showtipology($event)" :value="item.id"> {{item.name}}</button>
+    <main>
+        <section class="container">
+            <div class="fl-typologies d-flex mb-5 justify-content-between">
+                <div v-for="item in typologies" :key="item.id">
+                    <button @click="showtipology($event)" :value="item.id" type="button" class="btn btn-lg fl-button text-capitalize"> {{item.name}}</button>
+                </div>
             </div>
-
-
-
-        </div>
-
-
-        <div>
-            <h1>Ristoranti:</h1>
-            <div v-for="item in restaurants" :key="item.id">
-                {{item.name}}
+            <div>
+                <h1>Ristoranti:</h1>
+                <div v-for="item in restaurants" :key="item.id">
+                    {{item.name}}
+                </div>
             </div>
-
-
-        </div>
-
-
-    </div>
-
-
+        </section>
+    </main>
 </template>
 
 <script>
-export default {
-name: 'MainComponent',
-data(){
- return {
-    restaurants: undefined,
-    typologies : undefined
- }
-},
 
-methods: {
-    showRestaurant(url) {
-        axios.get(url).then(({data})=>{
-            this.restaurants = data.results;
-            this.typologies = data.typologies;
-            console.log(data.results);
-
-
-        })
+    export default {
+    name: 'MainComponent',
+    data(){
+    return {
+        restaurants: undefined,
+        typologies : undefined
+    }
     },
 
-    showtype(url){
-        axios.get(url).then(({data})=>{
-            console.log(url);
-            console.log(data)
-        }
-        )
+    methods: {
+        showRestaurant(url) {
+            axios.get(url).then(({data})=>{
+                this.restaurants = data.results;
+                this.typologies = data.typologies;
+                console.log(data.results);
+
+
+            })
+        },
+
+        showtype(url){
+            axios.get(url).then(({data})=>{
+                console.log(url);
+                console.log(data)
+            }
+            )
+        },
+
+
+        showtipology(e){
+            let id = e.target.value;
+            this.$router.push({path:'/' + id })
+            this.showtype('api/restaurant/' + id);
+            console.log(id);
+        },
+
     },
 
 
-    showtipology(e){
-        let id = e.target.value;
-        this.$router.push({path:'/' + id })
-        this.showtype('api/restaurant/' + id);
-        console.log(id);
-    },
-
-},
+    mounted() {
+        this.showRestaurant('api/restaurant')
+            // axios.get('api/restaurant').then(({data})=>{
+            //     this.restaurants = data.results;
+            //     this.typologies = data.typologies;
+            //     console.log(data.results);
 
 
-mounted() {
-    this.showRestaurant('api/restaurant')
-        // axios.get('api/restaurant').then(({data})=>{
-        //     this.restaurants = data.results;
-        //     this.typologies = data.typologies;
-        //     console.log(data.results);
+            // })
 
 
-        // })
+    }
+    }
 
-
-}
-}
 </script>
 
-<style leng="scss" scoped>
+<style lang="scss" scoped>
 
-.typologies {
-    display: flex;
+@import '../../sass/app.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+section {
+    height: 25vh;
+    margin-top: 30vh;
+
+    h1 {
+        color: $fl-primary;
+        font-family: 'Kanit', sans-serif;
+        font-weight: 400;
+    }
+
+    .fl-button {
+        background-color: $fl-primary;
+        color: $fl-blank;
+    }
+
+    .fl-typologies {
+        width: 100%;
+    }
+}
+
+
+
+
+
 </style>
