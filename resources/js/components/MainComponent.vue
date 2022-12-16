@@ -6,12 +6,6 @@
                     <button @click="showtipology($event)" :value="item.id" type="button" class="btn btn-lg fl-button text-capitalize"> {{item.name}}</button>
                 </div>
             </div>
-            <div>
-                <h1>Ristoranti:</h1>
-                <div v-for="item in restaurants" :key="item.id">
-                    {{item.name}}
-                </div>
-            </div>
         </section>
     </main>
 </template>
