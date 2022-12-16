@@ -1,5 +1,7 @@
 <template>
     <main>
+        <WorkWithUsComponentVue/>
+        <RestaurantDetailsVue />
         <section class="container">
             <div class="fl-typologies d-flex mb-5 justify-content-between">
                 <div v-for="item in typologies" :key="item.id">
@@ -11,9 +13,12 @@
 </template>
 
 <script>
+import WorkWithUsComponentVue from './WorkWithUsComponent.vue';
+import RestaurantDetailsVue from './RestaurantDetails.vue';
 
     export default {
     name: 'MainComponent',
+    components: {WorkWithUsComponentVue, RestaurantDetailsVue},
     data(){
     return {
         restaurants: undefined,
@@ -43,7 +48,7 @@
 
         showtipology(e){
             let id = e.target.value;
-            this.$router.push({path:'/' + id })
+            this.$router.push({path:'/restaurant/' + id })
             this.showtype('api/restaurant/' + id);
             console.log(id);
         },
