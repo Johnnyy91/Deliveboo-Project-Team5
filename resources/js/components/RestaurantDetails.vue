@@ -12,7 +12,10 @@
             <h1>Orario Cena:</h1>
             <h2>{{item.dinner_time_slot_open}}</h2>
             <h2>{{item.dinner_time_slot_close}}</h2>
+            <button @click="showMenu(item.slug)">Menu</button>
         </div>
+
+
 
   </div>
 
@@ -31,8 +34,15 @@
             axios.get('/api/restaurant/' + this.$route.params.id).then((data)=>{
             this.restaurant  = data.data;
             })
+        },
+
+        methods: {
+            showMenu(slug){
+                this.$router.push('/' + slug)
+            }
         }
         }
+
 
 </script>
 
