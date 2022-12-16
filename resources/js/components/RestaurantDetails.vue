@@ -1,8 +1,8 @@
 <template>
 
   <div class="py-5">
-
      <div class="py-5" v-for="item in restaurant" :key="item.id">
+            <img :src="'/storage/' + item.img" alt="">
             <h1>{{item.name}}</h1>
             <h1>Indirizzo:</h1>
             <h2>{{item.address}}</h2>
@@ -12,7 +12,7 @@
             <h1>Orario Cena:</h1>
             <h2>{{item.dinner_time_slot_open}}</h2>
             <h2>{{item.dinner_time_slot_close}}</h2>
-            <button @click="showMenu(item.slug)">Menu</button>
+            <router-link :to="'/menu/' + item.slug">Menu</router-link>
         </div>
 
 
@@ -31,7 +31,8 @@
             }
         },
         mounted(){
-            axios.get('/api/restaurant/' + this.$route.params.id).then((data)=>{
+            axios.get('/api/restaurant/' + this.$route.params.id).then((data) => {
+            console.log(data.data[0].img)
             this.restaurant  = data.data;
             })
         },
