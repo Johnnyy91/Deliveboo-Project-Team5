@@ -1,8 +1,8 @@
 <template>
 
-  <div>
+  <div class="py-5">
 
-     <div v-for="item in restaurant" :key="item.id">
+     <div class="py-5" v-for="item in restaurant" :key="item.id">
             <h1>{{item.name}}</h1>
             <h1>Indirizzo:</h1>
             <h2>{{item.address}}</h2>
