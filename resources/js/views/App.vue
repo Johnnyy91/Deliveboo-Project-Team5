@@ -2,11 +2,7 @@
 
     <main>
         <HeaderComponent />
-        <HeroComponent />
-
-        <RestaurantDetails />
-        <router-view> </router-view>
-        <WorkWithUsComponent />
+        <router-view class="space-from-header px-4"> </router-view>
         <FooterComponent />
 
     </main>
@@ -39,8 +35,10 @@
 
 </script>
 
-<style>
-
+<style scoped lang="scss">
+    .space-from-header {
+        margin-top: 8rem;
+    }
 
 
 </style>
