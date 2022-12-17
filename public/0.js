@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     var _this = this;
-    axios.get('/api/menu').then(function (_ref) {
+    axios.get('/api/menu/' + this.$route.params.slug).then(function (_ref) {
       var data = _ref.data;
       console.log('ciao');
       console.log(data);
