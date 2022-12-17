@@ -28,12 +28,18 @@ import RestaurantDetailsVue from './RestaurantDetails.vue';
 
     export default {
     name: 'MainComponent',
+
     components: {WorkWithUsComponentVue, RestaurantDetailsVue},
+
     data(){
-    return {
-        restaurants: undefined,
-        typologies : undefined
+        return {
+            restaurants: undefined,
+            typologies : undefined
     }
+    },
+
+    mounted() {
+        this.showRestaurant('api/restaurant')
     },
 
     methods: {
@@ -47,35 +53,12 @@ import RestaurantDetailsVue from './RestaurantDetails.vue';
             })
         },
 
-        showtype(url){
-            axios.get(url).then(({data})=>{
-                console.log(url);
-                console.log(data)
-            }
-            )
-        },
-
-
         showtipology(e){
             let id = e.target.value;
             this.$router.push({path:'/restaurant/' + id })
             this.showtype('api/restaurant/' + id);
             console.log(id);
         },
-
-    },
-
-
-    mounted() {
-        this.showRestaurant('api/restaurant')
-            // axios.get('api/restaurant').then(({data})=>{
-            //     this.restaurants = data.results;
-            //     this.typologies = data.typologies;
-            //     console.log(data.results);
-
-
-            // })
-
 
     }
     }
