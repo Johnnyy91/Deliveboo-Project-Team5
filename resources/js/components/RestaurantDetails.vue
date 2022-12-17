@@ -22,7 +22,7 @@
 
             </div>
 
-            <router-link :to="'/menu/' + item.slug" class="btn btn-danger">Menu</router-link>
+            <router-link :to="'/menu/' + item.slug" class="btn btn-danger mt-5">Visualizza Menù</router-link>
         </div>
 
 
