@@ -3,7 +3,7 @@
     <main>
         <HeaderComponent />
         <router-view class="space-from-header px-4"> </router-view>
-        <FooterComponent />
+
 
     </main>
 
@@ -16,7 +16,7 @@
 
     import RestaurantDetails from '../components/RestaurantDetails.vue';
     import WorkWithUsComponent from '../components/WorkWithUsComponent.vue'
-    import FooterComponent from '../components/FooterComponent.vue';
+
 
     export default {
 
@@ -27,7 +27,7 @@
 
             RestaurantDetails,
             WorkWithUsComponent,
-            FooterComponent
+
 
         }
 
