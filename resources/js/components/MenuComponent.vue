@@ -36,9 +36,9 @@
         </div>
 
 
-        <div class="text-center py-4">
+        <div class="text-center pt-5">
 
-            <h1>IL TUO CARRELLO</h1>
+            <h1 class="pb-2">IL TUO CARRELLO</h1>
 
             <div class="card-container d-flex justify-content-center align-items-center">
                 <div>
@@ -102,7 +102,6 @@ mounted() {
     }
 
     .card-container {
-        width: 800px;
         height: 400px;
         background-color: #f6f6f6;
         border: 3px solid rgb(29, 102, 0);

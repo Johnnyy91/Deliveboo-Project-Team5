@@ -98,8 +98,10 @@ var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "text-center py-4"
-  }, [_c("h1", [_vm._v("IL TUO CARRELLO")]), _vm._v(" "), _c("div", {
+    staticClass: "text-center pt-5"
+  }, [_c("h1", {
+    staticClass: "pb-2"
+  }, [_vm._v("IL TUO CARRELLO")]), _vm._v(" "), _c("div", {
     staticClass: "card-container d-flex justify-content-center align-items-center"
   }, [_c("div", [_c("h1", [_vm._v("VUOTO")])])])]);
 }];
@@ -120,7 +122,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".text[data-v-98f701fa] {\n  height: 100vh;\n}\nimg[data-v-98f701fa] {\n  height: 200px;\n  width: 300px;\n}\n.card[data-v-98f701fa] {\n  width: 500;\n  background-color: #f6f6f6;\n  margin: 20px 20px;\n}\nbutton[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\ninput[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\n.card-container[data-v-98f701fa] {\n  width: 800px;\n  height: 400px;\n  background-color: #f6f6f6;\n  border: 3px solid rgb(29, 102, 0);\n  margin: 20px 20px;\n}", ""]);
+exports.push([module.i, ".text[data-v-98f701fa] {\n  height: 100vh;\n}\nimg[data-v-98f701fa] {\n  height: 200px;\n  width: 300px;\n}\n.card[data-v-98f701fa] {\n  width: 500;\n  background-color: #f6f6f6;\n  margin: 20px 20px;\n}\nbutton[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\ninput[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\n.card-container[data-v-98f701fa] {\n  height: 400px;\n  background-color: #f6f6f6;\n  border: 3px solid rgb(29, 102, 0);\n  margin: 20px 20px;\n}", ""]);
 
 // exports
 
