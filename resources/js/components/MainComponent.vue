@@ -1,9 +1,19 @@
 <template>
-    <main class="py-5">
+    <main>
+
         <WorkWithUsComponentVue/>
         <RestaurantDetailsVue />
-        <section class="container py-5">
-            <div class="fl-typologies d-flex mb-5 justify-content-between">
+        <section class="container">
+            <div>
+            <h1 class="text-center mb-5">COSA VORRESTI MANGIARE ?</h1>
+            </div >
+                <div class="d-flex justify-content-center mb-5">
+
+                    <img src="https://www.pngmart.com/files/5/Hamburger-PNG-Transparent-Image.png" alt="">
+
+                </div>
+
+                <div class="fl-typologies d-flex mb-5 justify-content-between">
                 <div v-for="item in typologies" :key="item.id">
                     <button @click="showtipology($event)" :value="item.id" type="button" class="btn btn-lg fl-button text-capitalize"> {{item.name}}</button>
                 </div>
@@ -82,10 +92,6 @@ import RestaurantDetailsVue from './RestaurantDetails.vue';
     box-sizing: border-box;
 }
 
-section {
-    height: 25vh;
-    margin-top: 30vh;
-
     h1 {
         color: $fl-primary;
         font-family: 'Kanit', sans-serif;
@@ -100,7 +106,10 @@ section {
     .fl-typologies {
         width: 100%;
     }
-}
+
+    h1 {
+        font-size: 50px;
+    }
 
 
 
