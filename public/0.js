@@ -10,7 +10,21 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'MenuComponent'
+  name: 'MenuComponent',
+  data: function data() {
+    return {
+      dishes: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+    axios.get('/api/menu').then(function (_ref) {
+      var data = _ref.data;
+      console.log('ciao');
+      console.log(data);
+      _this.dishes = data.results;
+    });
+  }
 });
 
 /***/ }),
@@ -29,16 +43,52 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
+  return _c("div", {
+    staticClass: "text py-5"
+  }, [_c("h1", {
+    staticClass: "text-center"
+  }, [_vm._v("Menu")]), _vm._v(" "), _vm._l(_vm.dishes, function (dish) {
+    return _c("div", {
+      key: dish.id,
+      staticClass: "text-uppercase py-4"
+    }, [_c("div", {
+      staticClass: "dishes"
+    }, [_c("div", {
+      staticClass: "card pb-5 d-flex flex-row text-center justify-content-between"
+    }, [_c("div", {
+      staticClass: "text-area text-left"
+    }, [_c("h2", [_vm._v(_vm._s(dish.name))]), _vm._v(" "), _c("img", {
+      attrs: {
+        src: "/storage/" + dish.img,
+        alt: ""
+      }
+    }), _vm._v(" "), _c("h5", [_vm._v("Ingredienti:" + _vm._s(dish.ingredients))]), _vm._v(" "), _c("h4", {
+      staticClass: "py-3"
+    }, [_vm._v("Prezzo:" + _vm._s(dish.price))])]), _vm._v(" "), _vm._m(0, true)])])]);
+  })], 2);
 };
 var staticRenderFns = [function () {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "text"
-  }, [_c("h1", {
-    staticClass: "text-right"
-  }, [_vm._v("Menu")])]);
+    staticClass: "button-area d-flex my-5 py-5"
+  }, [_c("label", {
+    attrs: {
+      "for": "food"
+    }
+  }, [_vm._v("Pezzi:")]), _vm._v(" "), _c("input", {
+    attrs: {
+      type: "number",
+      id: "food",
+      name: "food",
+      min: "1",
+      max: "100"
+    }
+  }), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-info mx-5"
+  }, [_vm._v("Aggiungi")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-danger mx-5"
+  }, [_vm._v("Rimuovi")])]);
 }];
 render._withStripped = true;
 
@@ -57,7 +107,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".text[data-v-98f701fa] {\n  height: 100vh;\n}", ""]);
+exports.push([module.i, ".text[data-v-98f701fa] {\n  height: 100vh;\n}\nimg[data-v-98f701fa] {\n  height: 200px;\n  width: 300px;\n}\n.card[data-v-98f701fa] {\n  width: 50%;\n  background-color: #f6f6f6;\n  margin: 20px 20px;\n}\nbutton[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\ninput[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}", ""]);
 
 // exports
 
