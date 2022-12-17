@@ -12,9 +12,7 @@
                     <img src="./images/DeliveBoo-Logo.png" alt="logo" class="fl-logo d-flex">
                     <h2 class="title pt-3">DELIVEBOO</h2>
                 </div>
-                <div class="w-50">
 
-                </div>
             </nav>
         </div>
     </section>
