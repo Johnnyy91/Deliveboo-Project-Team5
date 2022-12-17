@@ -60,7 +60,7 @@ data(){
     }
 },
 mounted() {
-         axios.get('/api/menu').then(({data}) => {
+         axios.get('/api/menu/' + this.$route.params.slug).then(({data}) => {
             console.log('ciao');
             console.log(data);
                 this.dishes = data.results;
