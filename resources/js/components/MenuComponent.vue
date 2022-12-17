@@ -1,6 +1,9 @@
 <template>
+
     <div class="text py-5 d-flex justify-content-between">
+
         <div>
+            <router-link :to="'/restaurant'" class="btn btn-danger mx-3">Ritorna alla Homepage</router-link>
             <h1 class="text-center">MENU</h1>
             <div class="text-uppercase py-4" v-for="dish in dishes" :key="dish.id">
             <div class="dishes">

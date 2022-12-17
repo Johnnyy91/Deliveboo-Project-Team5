@@ -45,7 +45,12 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "text py-5 d-flex justify-content-between"
-  }, [_c("div", [_c("h1", {
+  }, [_c("div", [_c("router-link", {
+    staticClass: "btn btn-danger mx-3",
+    attrs: {
+      to: "/restaurant"
+    }
+  }, [_vm._v("Ritorna alla Homepage")]), _vm._v(" "), _c("h1", {
     staticClass: "text-center"
   }, [_vm._v("MENU")]), _vm._v(" "), _vm._l(_vm.dishes, function (dish) {
     return _c("div", {
