@@ -1,7 +1,8 @@
 <template>
-    <div class="text py-5">
-       <h1 class="text-center">Menu</h1>
-        <div class="text-uppercase py-4" v-for="dish in dishes" :key="dish.id">
+    <div class="text py-5 d-flex justify-content-between">
+        <div>
+            <h1 class="text-center">MENU</h1>
+            <div class="text-uppercase py-4" v-for="dish in dishes" :key="dish.id">
             <div class="dishes">
                 <div class="card pb-5 d-flex flex-row text-center justify-content-between">
                     <div class="text-area text-left">
@@ -27,9 +28,28 @@
 
 
             </div>
+        </div>
 
         </div>
+
+
+        <div class="text-center py-4">
+
+            <h1>IL TUO CARRELLO</h1>
+
+            <div class="card-container d-flex justify-content-center align-items-center">
+                <div>
+                    <h1>VUOTO</h1>
+                </div>
+
+
+            </div>
+
+        </div>
+
     </div>
+
+
 </template>
 <script>
 export default {
@@ -63,7 +83,7 @@ mounted() {
     }
 
     .card {
-        width: calc(100%/ 2);
+        width: 500;
         background-color: #f6f6f6;
         margin: 20px 20px;
     }
@@ -76,5 +96,13 @@ mounted() {
     input {
         height: 50px;
         width: 100px;
+    }
+
+    .card-container {
+        width: 800px;
+        height: 400px;
+        background-color: #f6f6f6;
+        border: 3px solid rgb(29, 102, 0);
+        margin: 20px 20px;
     }
 </style>

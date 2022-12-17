@@ -44,10 +44,10 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "text py-5"
-  }, [_c("h1", {
+    staticClass: "text py-5 d-flex justify-content-between"
+  }, [_c("div", [_c("h1", {
     staticClass: "text-center"
-  }, [_vm._v("Menu")]), _vm._v(" "), _vm._l(_vm.dishes, function (dish) {
+  }, [_vm._v("MENU")]), _vm._v(" "), _vm._l(_vm.dishes, function (dish) {
     return _c("div", {
       key: dish.id,
       staticClass: "text-uppercase py-4"
@@ -65,7 +65,7 @@ var render = function render() {
     }), _vm._v(" "), _c("h5", [_vm._v("Ingredienti:" + _vm._s(dish.ingredients))]), _vm._v(" "), _c("h4", {
       staticClass: "py-3"
     }, [_vm._v("Prezzo:" + _vm._s(dish.price))])]), _vm._v(" "), _vm._m(0, true)])])]);
-  })], 2);
+  })], 2), _vm._v(" "), _vm._m(1)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -89,6 +89,14 @@ var staticRenderFns = [function () {
   }, [_vm._v("Aggiungi")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-danger mx-5"
   }, [_vm._v("Rimuovi")])]);
+}, function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "text-center py-4"
+  }, [_c("h1", [_vm._v("IL TUO CARRELLO")]), _vm._v(" "), _c("div", {
+    staticClass: "card-container d-flex justify-content-center align-items-center"
+  }, [_c("div", [_c("h1", [_vm._v("VUOTO")])])])]);
 }];
 render._withStripped = true;
 
@@ -107,7 +115,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".text[data-v-98f701fa] {\n  height: 100vh;\n}\nimg[data-v-98f701fa] {\n  height: 200px;\n  width: 300px;\n}\n.card[data-v-98f701fa] {\n  width: 50%;\n  background-color: #f6f6f6;\n  margin: 20px 20px;\n}\nbutton[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\ninput[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}", ""]);
+exports.push([module.i, ".text[data-v-98f701fa] {\n  height: 100vh;\n}\nimg[data-v-98f701fa] {\n  height: 200px;\n  width: 300px;\n}\n.card[data-v-98f701fa] {\n  width: 500;\n  background-color: #f6f6f6;\n  margin: 20px 20px;\n}\nbutton[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\ninput[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\n.card-container[data-v-98f701fa] {\n  width: 800px;\n  height: 400px;\n  background-color: #f6f6f6;\n  border: 3px solid rgb(29, 102, 0);\n  margin: 20px 20px;\n}", ""]);
 
 // exports
 
