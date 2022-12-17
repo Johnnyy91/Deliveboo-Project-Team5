@@ -1,8 +1,8 @@
 <template>
-    <main>
+    <main class="py-5">
         <WorkWithUsComponentVue/>
         <RestaurantDetailsVue />
-        <section class="container">
+        <section class="container py-5">
             <div class="fl-typologies d-flex mb-5 justify-content-between">
                 <div v-for="item in typologies" :key="item.id">
                     <button @click="showtipology($event)" :value="item.id" type="button" class="btn btn-lg fl-button text-capitalize"> {{item.name}}</button>
