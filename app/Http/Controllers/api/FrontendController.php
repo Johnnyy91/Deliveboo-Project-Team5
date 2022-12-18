@@ -14,7 +14,11 @@ class FrontendController extends Controller{
 
     public function index () {
         try {
-            $r = Restaurant::with(['dishes', 'typologies'])->get();
+            $r = Restaurant::query()->get();
+            for ($i=0; $i < count($r); $i++) {
+                # code...
+                $r[$i]->with(['dishes', 'typologies']);
+            }
             $t = Typology::with(['restaurants'])->get();
             $data = [
                 'results' => $r,
@@ -35,15 +39,16 @@ class FrontendController extends Controller{
 
 
     public function show($slug) {
-         $typologies = Typology::all();
-         $data = [];
-         foreach($typologies as $typology){
+        $restaurants = Restaurant::with(['typologies'])->get();
+        $data = [];
+
+        foreach($restaurants as $restaurant){
+            foreach($restaurant->typologies as $typology){
          if ($typology->slug == $slug){
-           foreach($typology->restaurants as $item){
-               array_push($data,$item);
-           }
-         }
+            array_push($data, $restaurant);
+            }
         }
+    }
 
 
             return response($data);
