@@ -1,26 +1,26 @@
 <template>
 
   <div class="py-5">
-     <div class="py-5 card" v-for="item in restaurant" :key="item.id">
-            <h1>{{item.name}}</h1>
-            <img :src="'/storage/' + item.img" alt="">
+     <div class="py-5 card" v-for="restaurant in restaurants" :key="restaurant.id">
+            <h1>{{restaurant.name}}</h1>
+            <img :src="'/storage/' + restaurant.img" alt="">
             <h1>Indirizzo:</h1>
-            <h2>{{item.address}}</h2>
+            <h2>{{restaurant.address}}</h2>
             <div class="card-time d-flex justify-content-between text-center">
                 <div>
                     <h3>Orario Pranzo:</h3>
-                    <h4>{{item.lunch_time_slot_open}}</h4>
-                    <h4>{{item.lunch_time_slot_close}}</h4>
+                    <h4>{{restaurant.lunch_time_slot_open}}</h4>
+                    <h4>{{restaurant.lunch_time_slot_close}}</h4>
                 </div>
                 <div>
                     <h3>Orario Cena:</h3>
-                    <h4>{{item.dinner_time_slot_open}}</h4>
-                    <h4>{{item.dinner_time_slot_close}}</h4>
+                    <h4>{{restaurant.dinner_time_slot_open}}</h4>
+                    <h4>{{restaurant.dinner_time_slot_close}}</h4>
                 </div>
             </div>
-            <div><span v-for="typology in item.typologies" :key="typology.id">{{ typology.name }}</span></div>
+            <div><span v-for="typology in restaurant.typologies" :key="typology.id">{{ typology.name }}</span></div>
 
-            <router-link :to="'/menu/' + item.slug" class="btn btn-danger mt-5">Visualizza Menù</router-link>
+            <router-link :to="'/menu/' + restaurant.slug" class="btn btn-danger mt-5">Visualizza Menù</router-link>
         </div>
 
 
@@ -35,13 +35,13 @@
         name: 'RestaurantDetails',
         data() {
             return {
-                restaurant: [],
+                restaurants: [],
             }
         },
         mounted(){
             axios.get('/api/restaurant/' + this.$route.params.slug).then((data) => {
             console.log(data.data[0].img)
-            this.restaurant  = data.data;
+            this.restaurants  = data.data;
             console.log(data)
             })
         },
