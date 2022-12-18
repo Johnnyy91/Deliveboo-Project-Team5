@@ -41,7 +41,7 @@
             }
         },
         mounted(){
-            axios.get('/api/restaurant/' + this.$route.params.id).then((data) => {
+            axios.get('/api/restaurant/' + this.$route.params.slug).then((data) => {
             console.log(data.data[0].img)
             this.restaurant  = data.data;
             })

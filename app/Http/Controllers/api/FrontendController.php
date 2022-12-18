@@ -31,11 +31,11 @@ class FrontendController extends Controller{
     }
 
 
-    public function show($id) {
+    public function show($slug) {
          $typologies = Typology::all();
          $data = [];
          foreach($typologies as $typology){
-         if ($typology->id == $id){
+         if ($typology->slug == $slug){
            foreach($typology->restaurants as $item){
                array_push($data,$item);
            }
