@@ -83,7 +83,7 @@ class DishSeeder extends Seeder
             $dish2->slug = $slug;
 
             $dish2->description='Piatto tipico genovese';
-            $dish2->price=8.50;
+            $dish2->price=8;
             $dish2->ingredients='Pesto , noci , scorze di limone';
             $dish2->visible=$faker->boolean();
 
@@ -107,7 +107,7 @@ class DishSeeder extends Seeder
             $dish3->slug = $slug;
 
             $dish3->description='Il nostro piatto forte';
-            $dish3->price=8.50;
+            $dish3->price=7;
             $dish3->ingredients='Sugo di ragù , basilico , parmigiano';
             $dish3->visible=$faker->boolean();
 
@@ -155,7 +155,7 @@ class DishSeeder extends Seeder
             $dish5->slug = $slug;
 
             $dish5->description='Piatto buono e tipico italiano';
-            $dish5->price=8.50;
+            $dish5->price=8;
             $dish5->ingredients='Sugo , basilico ';
             $dish5->visible=$faker->boolean();
 
@@ -179,7 +179,7 @@ class DishSeeder extends Seeder
             $dish6->slug = $slug;
 
             $dish6->description='Solo carni certificate';
-            $dish6->price=8.50;
+            $dish6->price=20;
             $dish6->ingredients='Carne , sale grosso ';
             $dish6->visible=$faker->boolean();
 
@@ -189,7 +189,7 @@ class DishSeeder extends Seeder
 //DISH7
             $dish7 = new Dish();
 
-            $dish7->name='Tagliata al lardo di colonnato';
+            $dish7->name='Tagliata al lardo di colonnata';
 
             $slug = Str::slug($dish7->name);
             $slug_base = $slug;
@@ -203,7 +203,7 @@ class DishSeeder extends Seeder
             $dish7->slug = $slug;
 
             $dish7->description='Piatto buono e tipico italiano';
-            $dish7->price=8.50;
+            $dish7->price=20;
             $dish7->ingredients='Carne , lardo di colonnato , sale grosso';
             $dish7->visible=$faker->boolean();
 
@@ -227,7 +227,7 @@ class DishSeeder extends Seeder
             $dish8->slug = $slug;
 
             $dish8->description='Pescato direttamente dai mari migliori';
-            $dish8->price=8.50;
+            $dish8->price=23;
             $dish8->ingredients='Pesce spada , prezzemolo , limone';
             $dish8->visible=$faker->boolean();
 
@@ -251,7 +251,7 @@ class DishSeeder extends Seeder
             $dish9->slug = $slug;
 
             $dish9->description='Piatto buono e tipico italiano';
-            $dish9->price=8.50;
+            $dish9->price=4;
             $dish9->ingredients='Melanzane , zucchine , peperoni';
             $dish9->visible=$faker->boolean();
 
@@ -275,7 +275,7 @@ class DishSeeder extends Seeder
             $dish10->slug = $slug;
 
             $dish10->description='Croccanti al punto giusto';
-            $dish10->price=8.50;
+            $dish10->price=4;
             $dish10->ingredients='Patate , olio , sale';
             $dish10->visible=$faker->boolean();
 
