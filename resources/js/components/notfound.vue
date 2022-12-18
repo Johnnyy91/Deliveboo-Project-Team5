@@ -10,16 +10,6 @@
 
 <script>
 
-        export default {
-        name: 'RestaurantDetails',
-        data() {
-            return {
-                restaurant: [],
-            }
-        },
-        }
-
-
 </script>
 
 <style lang="scss" scoped>
