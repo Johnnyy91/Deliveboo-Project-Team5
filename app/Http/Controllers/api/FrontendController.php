@@ -22,7 +22,10 @@ class FrontendController extends Controller{
                 'success' => count($r) > 0
             ];
         }catch(Error $e){
-
+            $data = [
+                'results' => $e->message,
+                'success' => false
+            ];
         }
 
         return response($data);
