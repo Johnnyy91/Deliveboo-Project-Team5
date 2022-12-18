@@ -52,7 +52,10 @@
                     <h1>VUOTO</h1>
                 </div>
                 <div v-else>
-                    <div v-for="dish, i in cart" :key="i">{{ dish }}</div>
+                    <div v-for="dish in cart" :key="dish.id">
+                        <span class="dish">{{ dish.name }}</span>
+                        <span class="count">{{ dish.count }}</span>
+                    </div>
                 </div>
 
 
@@ -82,10 +85,29 @@ export default {
     },
     methods: {
         addDish(dish) {
+            //some ritorna un booleano se nel primo par (array)
+            const dishes_exist = this.cart.some((cart_dish) => {
+                return cart_dish.id == dish.id
+            })
 
-            this.cart.push(dish.name);
-            console.log(this.cart);
+            console.log(dishes_exist)
+            if (!dishes_exist) {
+                this.cart.push(dish)
+                dish.count = 1;
+                console.log('dish.count', dish.count);
+            } else {
 
+                const dish_find = this.cart.findIndex((cart_dish) => {
+                    return cart_dish.id == dish.id
+                })
+
+                const dish_selected = this.cart[dish_find]
+                dish_selected.count++
+                this.cart.splice(dish_find, 1, dish_selected)
+
+                // console.log('dish.count', dish.count);
+                // console.log('dish.find', dish_find);
+            }
         }
     },
 }
