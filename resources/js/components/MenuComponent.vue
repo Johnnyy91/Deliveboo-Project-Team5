@@ -51,16 +51,15 @@
                 <div v-if="cart.length == 0">
                     <h1>VUOTO</h1>
                 </div>
+
                 <div v-else>
                     <div v-for="dish in cart" :key="dish.id">
                         <span class="dish">{{ dish.name }}</span>
                         <span class="count">q.{{ dish.count }}</span><br>
                         <span class="price">price{{ formater(dish.count * dish.price) }}</span>
-
                     </div>
+                    <div>Totale:{{ totalPrice() }}</div>
                 </div>
-
-
             </div>
 
         </div>
@@ -75,12 +74,11 @@ export default {
     data() {
         return {
             dishes: [],
-            cart: []
+            cart: [],
         }
     },
     mounted() {
         axios.get('/api/menu/' + this.$route.params.slug).then(({ data }) => {
-            console.log('ciao');
             console.log(data);
             this.dishes = data.results;
         })
@@ -99,13 +97,13 @@ export default {
                 console.log('dish.count', dish.count);
             } else {
 
-                const dish_find = this.cart.findIndex((cart_dish) => {
+                const dish_index = this.cart.findIndex((cart_dish) => {
                     return cart_dish.id == dish.id
                 })
 
-                const dish_selected = this.cart[dish_find]
+                const dish_selected = this.cart[dish_index]
                 dish_selected.count++
-                this.cart.splice(dish_find, 1, dish_selected)
+                this.cart.splice(dish_index, 1, dish_selected)
 
                 // console.log('dish.count', dish.count);
                 // console.log('dish.find', dish_find);
@@ -116,6 +114,13 @@ export default {
                 style: "currency",
                 currency: "EUR",
             }).format(number)
+        },
+        totalPrice() {
+            let sum = 0;
+            this.cart.forEach(dish => {
+                sum += dish.price * dish.count;
+            });
+            return this.formater(sum);
         }
     },
 }
