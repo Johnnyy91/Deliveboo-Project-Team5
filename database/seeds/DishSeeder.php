@@ -17,13 +17,13 @@ class DishSeeder extends Seeder
     public function run(Faker $faker)
     {
 
-        for ($i = 0; $i < 10; $i++) {
 
-            $dish = new Dish();
+//DISH1
+            $dish1 = new Dish();
 
-            $dish->name=$faker->text(10);
+            $dish1->name='Carbonara';
 
-            $slug = Str::slug($dish->name);
+            $slug = Str::slug($dish1->name);
             $slug_base = $slug;
             $existingslug = Dish::where('slug', $slug)->first();
             $counter = 1;
@@ -32,15 +32,39 @@ class DishSeeder extends Seeder
                 $existingslug = Dish ::where('slug', $slug)->first();
                 $counter++;
             }
-            $dish->slug = $slug;
+            $dish1->slug = $slug;
 
-            $dish->description=$faker->text(20);
-            $dish->price=$faker->randomFloat(2, 10,200);
-            $dish->ingredients=$faker->text(50);
-            $dish->visible=$faker->boolean();
-            $dish->img = $faker->imageUrl(640, 480);
+            $dish1->description='Piatto buono e tipico italiano';
+            $dish1->price=8.50;
+            $dish1->ingredients='Uova , guanciale , pecorino';
+            $dish1->visible=$faker->boolean();
 
-            $dish->save();
-        }
+            $dish1->restaurant_id=1;
+            $dish1->save();
+
+//DISH2
+             $dish1 = new Dish();
+
+            $dish1->name=$faker->text(10);
+
+            $slug = Str::slug($dish1->name);
+            $slug_base = $slug;
+            $existingslug = Dish::where('slug', $slug)->first();
+            $counter = 1;
+            while ($existingslug) {
+                $slug = $slug_base . '_' . $counter;
+                $existingslug = Dish ::where('slug', $slug)->first();
+                $counter++;
+            }
+            $dish1->slug = $slug;
+
+            $dish1->description=$faker->text(20);
+            $dish1->price=$faker->randomFloat(2, 10,200);
+            $dish1->ingredients=$faker->text(50);
+            $dish1->visible=$faker->boolean();
+            $dish1->img = $faker->imageUrl(640, 480);
+
+            $dish1->save();
+
     }
 }
