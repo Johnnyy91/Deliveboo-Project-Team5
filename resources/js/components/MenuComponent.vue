@@ -54,7 +54,9 @@
                 <div v-else>
                     <div v-for="dish in cart" :key="dish.id">
                         <span class="dish">{{ dish.name }}</span>
-                        <span class="count">{{ dish.count }}</span>
+                        <span class="count">q.{{ dish.count }}</span><br>
+                        <span class="price">price{{ formater(dish.count * dish.price) }}</span>
+
                     </div>
                 </div>
 
@@ -108,6 +110,12 @@ export default {
                 // console.log('dish.count', dish.count);
                 // console.log('dish.find', dish_find);
             }
+        },
+        formater(number) {
+            return new Intl.NumberFormat("de-DE", {
+                style: "currency",
+                currency: "EUR",
+            }).format(number)
         }
     },
 }
