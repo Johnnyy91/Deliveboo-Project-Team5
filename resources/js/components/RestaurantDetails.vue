@@ -16,11 +16,9 @@
                     <h3>Orario Cena:</h3>
                     <h4>{{item.dinner_time_slot_open}}</h4>
                     <h4>{{item.dinner_time_slot_close}}</h4>
-
                 </div>
-
-
             </div>
+            <div><span v-for="typology in item.typologies" :key="typology.id">{{ typology.name }}</span></div>
 
             <router-link :to="'/menu/' + item.slug" class="btn btn-danger mt-5">Visualizza Menù</router-link>
         </div>
@@ -44,6 +42,7 @@
             axios.get('/api/restaurant/' + this.$route.params.slug).then((data) => {
             console.log(data.data[0].img)
             this.restaurant  = data.data;
+            console.log(data)
             })
         },
 
