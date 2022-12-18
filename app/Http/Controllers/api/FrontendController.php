@@ -14,8 +14,8 @@ class FrontendController extends Controller{
 
     public function index () {
         try {
-            $r = Restaurant::all();
-            $t = Typology::all();
+            $r = Restaurant::with(['dishes', 'typologies'])->get();
+            $t = Typology::with(['restaurants'])->get();
             $data = [
                 'results' => $r,
                 'typologies' => $t,
