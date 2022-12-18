@@ -26,7 +26,7 @@
                             </button>
                             <!-- /ADD DISCH -->
 
-                            <button class="btn btn-danger mx-5">
+                            <button @click="removeDish(dish)" class="btn btn-danger mx-5">
                                 Rimuovi
                             </button>
 
@@ -107,6 +107,18 @@ export default {
 
                 // console.log('dish.count', dish.count);
                 // console.log('dish.find', dish_find);
+            }
+        },
+        removeDish(dish) {
+            const dishes_exist = this.cart.some((cart_dish) => {
+                return cart_dish.id == dish.id
+            })
+            if (dishes_exist) {
+                const dish_index = this.cart.findIndex((cart_dish) => {
+                    return cart_dish.id == dish.id
+                })
+                dish.count = 0;
+                this.cart.splice(dish_index, 1)
             }
         },
         formater(number) {
