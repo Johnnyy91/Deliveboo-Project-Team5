@@ -10,7 +10,7 @@
 
             <div>
                 <label for="name">Destinatario</label>
-                <input v-model="email" type="name" id="name" name="name" >
+                <input v-model="name" type="name" id="name" name="name" >
 
             </div>
 
