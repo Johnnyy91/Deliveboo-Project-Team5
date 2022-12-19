@@ -45,9 +45,14 @@
                         <span class="count">q.{{ dish.count }} =</span>
                         <span class="price">Prezzo: {{ formater(dish.count * dish.price) }}</span>
 
-
-
                 </div>
+
+                <v-braintree
+                        token="sandbox_gpxc3my7_nr7dbky87tmcnygt"
+                        @success="onSuccess"
+                        @error="onError"
+                    ></v-braintree>
+
                         <hr>
                     <div class="py-1">Prezzo Totale da Pagare:  {{ totalPrice() }}</div>
             </div>
@@ -96,6 +101,15 @@ export default {
             });
             return this.formater(sum);
         },
+
+        onSuccess (payload) {
+        let nonce = payload.nonce;
+        // Do something great with the nonce...
+        },
+        onError (error) {
+        let message = error.message;
+        // Whoops, an error has occured while trying to get the nonce
+    }
     },
 }
 </script>

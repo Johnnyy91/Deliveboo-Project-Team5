@@ -1,6 +1,9 @@
 import router from './router';
 import Vue from 'vue'
 import App from './views/App'
+import VueBraintree from 'vue-braintree'
+
+Vue.use(VueBraintree)
 
  require('./bootstrap');
 

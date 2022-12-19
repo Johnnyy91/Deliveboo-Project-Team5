@@ -37,14 +37,14 @@ __webpack_require__.r(__webpack_exports__);
       var dishes_exist = this.cart.some(function (cart_dish) {
         return cart_dish.id == dish.id;
       });
+      var dish_index = this.cart.findIndex(function (cart_dish) {
+        return cart_dish.id == dish.id;
+      });
+      var dish_selected = this.cart[dish_index];
       if (quantity > 0 && !dishes_exist) {
         this.cart.push(dish);
         dish.count = quantity;
       } else if (quantity > 0) {
-        var dish_index = this.cart.findIndex(function (cart_dish) {
-          return cart_dish.id == dish.id;
-        });
-        var dish_selected = this.cart[dish_index];
         dish_selected.count = quantity;
         this.cart.splice(dish_index, 1, dish_selected);
       } else if (!dishes_exist) {
@@ -52,12 +52,8 @@ __webpack_require__.r(__webpack_exports__);
         dish.count = 1;
         console.log('dish.count', dish.count);
       } else {
-        var _dish_index = this.cart.findIndex(function (cart_dish) {
-          return cart_dish.id == dish.id;
-        });
-        var _dish_selected = this.cart[_dish_index];
-        _dish_selected.count++;
-        this.cart.splice(_dish_index, 1, _dish_selected);
+        dish_selected.count++;
+        this.cart.splice(dish_index, 1, dish_selected);
 
         // console.log('dish.count', dish.count);
         // console.log('dish.find', dish_find);
@@ -144,6 +140,14 @@ __webpack_require__.r(__webpack_exports__);
         sum += dish.price * dish.count;
       });
       return this.formater(sum);
+    },
+    onSuccess: function onSuccess(payload) {
+      var nonce = payload.nonce;
+      // Do something great with the nonce...
+    },
+    onError: function onError(error) {
+      var message = error.message;
+      // Whoops, an error has occured while trying to get the nonce
     }
   }
 });
@@ -305,7 +309,7 @@ var render = function render() {
     attrs: {
       "for": "name"
     }
-  }, [_vm._v("Nome Utente")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Destinatario")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -330,7 +334,7 @@ var render = function render() {
     attrs: {
       "for": "email"
     }
-  }, [_vm._v("Email Utente")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Email")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -355,7 +359,7 @@ var render = function render() {
     attrs: {
       "for": "address"
     }
-  }, [_vm._v("Indirizzo Utente")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Indirizzo")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -388,6 +392,14 @@ var render = function render() {
     }, [_vm._v("q." + _vm._s(dish.count) + " =")]), _vm._v(" "), _c("span", {
       staticClass: "price"
     }, [_vm._v("Prezzo: " + _vm._s(_vm.formater(dish.count * dish.price)))])]);
+  }), _vm._v(" "), _c("v-braintree", {
+    attrs: {
+      token: "sandbox_gpxc3my7_nr7dbky87tmcnygt"
+    },
+    on: {
+      success: _vm.onSuccess,
+      error: _vm.onError
+    }
   }), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "py-1"
   }, [_vm._v("Prezzo Totale da Pagare:  " + _vm._s(_vm.totalPrice()))])], 2)]);
