@@ -59,6 +59,7 @@
                         <span class="price">price{{ formater(dish.count * dish.price) }}</span>
                     </div>
                     <div>Totale:{{ totalPrice() }}</div>
+                    <button class="btn btn-info">Ordina</button>
                 </div>
             </div>
 
