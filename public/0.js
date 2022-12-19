@@ -131,6 +131,19 @@ __webpack_require__.r(__webpack_exports__);
     },
     closeMod: function closeMod() {
       this.$parent.$data.validation = false;
+    },
+    formater: function formater(number) {
+      return new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR"
+      }).format(number);
+    },
+    totalPrice: function totalPrice() {
+      var sum = 0;
+      this.cart.forEach(function (dish) {
+        sum += dish.price * dish.count;
+      });
+      return this.formater(sum);
     }
   }
 });
@@ -364,14 +377,20 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", [_c("h2", {
-    staticClass: "pt-5"
+    staticClass: "py-4"
   }, [_vm._v("IL TUO RIEPILOGO")]), _vm._v(" "), _vm._l(_vm.cart, function (dish) {
     return _c("div", {
       key: dish.id
     }, [_c("span", {
       staticClass: "dish"
-    }, [_vm._v("Prezzo Totale: " + _vm._s(dish.count * dish.price) + " €")])]);
-  })], 2)]);
+    }, [_vm._v(_vm._s(dish.name))]), _vm._v(" "), _c("span", {
+      staticClass: "count"
+    }, [_vm._v("q." + _vm._s(dish.count) + " =")]), _vm._v(" "), _c("span", {
+      staticClass: "price"
+    }, [_vm._v("Prezzo: " + _vm._s(_vm.formater(dish.count * dish.price)))])]);
+  }), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "py-1"
+  }, [_vm._v("Prezzo Totale da Pagare:  " + _vm._s(_vm.totalPrice()))])], 2)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,

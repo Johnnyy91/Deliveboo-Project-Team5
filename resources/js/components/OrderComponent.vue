@@ -39,13 +39,17 @@
 
         </form>
             <div>
-                <h2 class="pt-5">IL TUO RIEPILOGO</h2>
+                <h2 class="py-4">IL TUO RIEPILOGO</h2>
                 <div v-for="dish in cart" :key="dish.id">
-                <span class="dish">Prezzo Totale: {{(dish.count * dish.price) }} €</span>
+                <span class="dish">{{ dish.name }}</span>
+                        <span class="count">q.{{ dish.count }} =</span>
+                        <span class="price">Prezzo: {{ formater(dish.count * dish.price) }}</span>
 
-            </div>
 
 
+                </div>
+                        <hr>
+                    <div class="py-1">Prezzo Totale da Pagare:  {{ totalPrice() }}</div>
             </div>
 
     </div>
@@ -78,7 +82,20 @@ export default {
         },
         closeMod() {
             this.$parent.$data.validation = false;
-        }
+        },
+        formater(number) {
+            return new Intl.NumberFormat("de-DE", {
+                style: "currency",
+                currency: "EUR",
+            }).format(number)
+        },
+        totalPrice() {
+            let sum = 0;
+            this.cart.forEach(dish => {
+                sum += dish.price * dish.count;
+            });
+            return this.formater(sum);
+        },
     },
 }
 </script>
