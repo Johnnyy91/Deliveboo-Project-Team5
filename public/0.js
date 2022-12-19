@@ -275,18 +275,20 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "flex flex-row-reverse w-100"
   }, [_c("button", {
+    staticClass: "btn btn-danger mb-5",
     on: {
       click: _vm.closeMod
     }
-  }, [_vm._v("X")])]), _vm._v(" "), _c("form", {
+  }, [_vm._v("CHIUDI")])]), _vm._v(" "), _c("form", {
     ref: "order",
+    staticClass: "d-flex justify-content-center flex-column",
     on: {
       submit: function submit($event) {
         $event.preventDefault();
         return _vm.clicked();
       }
     }
-  }, [_c("label", {
+  }, [_c("div", [_c("label", {
     attrs: {
       "for": "email"
     }
@@ -311,7 +313,7 @@ var render = function render() {
         _vm.email = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("label", {
+  })]), _vm._v(" "), _c("div", [_c("label", {
     attrs: {
       "for": "address"
     }
@@ -336,7 +338,7 @@ var render = function render() {
         _vm.address = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("input", {
+  })]), _vm._v(" "), _c("input", {
     attrs: {
       type: "submit",
       value: "Send"

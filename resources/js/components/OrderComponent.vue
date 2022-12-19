@@ -1,25 +1,31 @@
 <template>
     <div class="pt-5 text-center buyClass">
     <div class="flex flex-row-reverse w-100">
-    <button @click="closeMod">X</button>
+    <button class="btn btn-danger mb-5" @click="closeMod">CHIUDI</button>
     </div>
-        <form ref="order"  @submit.prevent="clicked()">
+        <form ref="order" class="d-flex justify-content-center flex-column" @submit.prevent="clicked()">
 
             <!-- TOKEN CSRF -->
             <!-- <input type="hidden" name="_token" v-bind:value="csrf"> -->
 
-            <!-- EMAIL -->
-            <label for="email">Email Client</label>
-            <input v-model="email" type="email" id="email" name="email_client" >
+            <div>
+                <label for="email">Email Client</label>
+                <input v-model="email" type="email" id="email" name="email_client" >
+
+            </div>
 
 
 
-            <!-- ADDRESS -->
-            <label for="address">Address Client</label>
-            <input v-model="address" type="text" id="address" name="address_client">
+
+            <div>
+                <label for="address">Address Client</label>
+                <input v-model="address" type="text" id="address" name="address_client">
+
+            </div>
 
 
-            <input type="submit" value="Send">
+
+            <input type="submit"  value="Send">
 
 
         </form>
