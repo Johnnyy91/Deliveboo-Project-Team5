@@ -18,10 +18,10 @@
 
                         <div class="button-area d-flex my-5 py-5">
                             <label for="food">Pezzi:</label>
-                            <input type="number" id="food" name="food" min="1" max="100">
+                            <input v-model="dish.quantity" type="number" id="food" name="food" min="1" max="100">
 
                             <!-- ADD DISCH -->
-                            <button @click="addDish(dish)" class="btn btn-info mx-5">
+                            <button @click="addDish(dish, dish.quantity)" class="btn btn-info mx-5">
                                 Aggiungi
                             </button>
                             <!-- /ADD DISCH -->
@@ -59,7 +59,6 @@
                         <span class="price">price{{ formater(dish.count * dish.price) }}</span>
                     </div>
                     <div>Totale:{{ totalPrice() }}</div>
-                    <button class="btn btn-info">Ordina</button>
                 </div>
             </div>
 
@@ -85,14 +84,23 @@ export default {
         })
     },
     methods: {
-        addDish(dish) {
+        addDish(dish, quantity) {
             //some ritorna un booleano se nel primo par (array)
             const dishes_exist = this.cart.some((cart_dish) => {
                 return cart_dish.id == dish.id
             })
-
-            console.log(dishes_exist)
-            if (!dishes_exist) {
+            if (quantity > 0 && !dishes_exist) {
+                this.cart.push(dish)
+                dish.count = quantity;
+            } else if (quantity > 0) {
+                const dish_index = this.cart.findIndex((cart_dish) => {
+                    return cart_dish.id == dish.id
+                })
+                const dish_selected = this.cart[dish_index]
+                dish_selected.count = quantity
+                this.cart.splice(dish_index, 1, dish_selected)
+            }
+            else if (!dishes_exist) {
                 this.cart.push(dish)
                 dish.count = 1;
                 console.log('dish.count', dish.count);
