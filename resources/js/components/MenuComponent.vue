@@ -20,11 +20,11 @@
                             <label for="food">Pezzi:</label>
                             <input v-model="dish.quantity" type="number" id="food" name="food" min="1" max="100">
 
-                            <!-- ADD DISCH -->
+                            <!-- ADD DISH -->
                             <button @click="addDish(dish, dish.quantity)" class="btn btn-info mx-5">
                                 Aggiungi
                             </button>
-                            <!-- /ADD DISCH -->
+                            <!-- /ADD DISH -->
 
                             <button @click="removeDish(dish)" class="btn btn-danger mx-5">
                                 Rimuovi
@@ -92,7 +92,7 @@ export default {
     },
     methods: {
         addDish(dish, quantity) {
-            //some ritorna un booleano se nel primo par (array)
+            // 'some()' ritorna un booleano se è presente nell' array
             const dishes_exist = this.cart.some((cart_dish) => {
                 return cart_dish.id == dish.id
             })
