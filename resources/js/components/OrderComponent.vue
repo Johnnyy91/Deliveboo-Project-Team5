@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pt-5 text-center">
         <form action="" method="post" enctype="multipart/form-data">
 
             <!-- TOKEN CSRF -->
