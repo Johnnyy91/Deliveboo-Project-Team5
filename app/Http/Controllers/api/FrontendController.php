@@ -31,7 +31,8 @@ class FrontendController extends Controller{
                 'success' => false
             ];
         }
-
+        // http://127.0.0.1:8000/api/restaurant
+        // dd($data);
         return response($data);
 
 
@@ -39,21 +40,20 @@ class FrontendController extends Controller{
 
 
     public function show($slug) {
+
         $restaurants = Restaurant::with(['typologies'])->get();
         $data = [];
 
         foreach($restaurants as $restaurant){
             foreach($restaurant->typologies as $typology){
-         if ($typology->slug == $slug){
-            array_push($data, $restaurant);
+                if ($typology->slug == $slug){
+                    array_push($data, $restaurant);
+                }
             }
         }
-    }
-
-
-            return response($data);
-
-
+        // http://127.0.0.1:8000/api/restaurant/paperino //paperino sta per lo slug del ristorante
+        // dd($restaurants);
+        return response($data);
     }
 }
 
