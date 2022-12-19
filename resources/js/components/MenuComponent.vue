@@ -96,14 +96,19 @@ export default {
             const dishes_exist = this.cart.some((cart_dish) => {
                 return cart_dish.id == dish.id
             })
+
+            const dish_index = this.cart.findIndex((cart_dish) => {
+                return cart_dish.id == dish.id
+            })
+
+            const dish_selected = this.cart[dish_index]
+
             if (quantity > 0 && !dishes_exist) {
                 this.cart.push(dish)
                 dish.count = quantity;
             } else if (quantity > 0) {
-                const dish_index = this.cart.findIndex((cart_dish) => {
-                    return cart_dish.id == dish.id
-                })
-                const dish_selected = this.cart[dish_index]
+
+
                 dish_selected.count = quantity
                 this.cart.splice(dish_index, 1, dish_selected)
             }
@@ -113,11 +118,7 @@ export default {
                 console.log('dish.count', dish.count);
             } else {
 
-                const dish_index = this.cart.findIndex((cart_dish) => {
-                    return cart_dish.id == dish.id
-                })
 
-                const dish_selected = this.cart[dish_index]
                 dish_selected.count++
                 this.cart.splice(dish_index, 1, dish_selected)
 
