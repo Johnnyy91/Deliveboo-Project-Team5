@@ -377,7 +377,7 @@ var render = function render() {
       }
     }
   })]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", [_c("h2", {
-    staticClass: "py-4"
+    staticClass: "py-2"
   }, [_vm._v("IL TUO RIEPILOGO")]), _vm._v(" "), _vm._l(_vm.cart, function (dish) {
     return _c("div", {
       key: dish.id
@@ -401,7 +401,7 @@ var staticRenderFns = [function () {
     staticClass: "mx-5 btn-success mt-5",
     attrs: {
       type: "submit",
-      value: "INVIA"
+      value: "PROCEDI ALL'ORDINE"
     }
   })]);
 }];
@@ -441,7 +441,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.buyClass{\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    width: 50%;\n    height: 50%;\n    background-color: #fff;\n    border-radius: 10px;\n    z-index: 999;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.buyClass{\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    width: 60%;\n    height: 70%;\n    background-color: #fff;\n    border-radius: 10px;\n    z-index: 999;\n}\n\n\n", ""]);
 
 // exports
 

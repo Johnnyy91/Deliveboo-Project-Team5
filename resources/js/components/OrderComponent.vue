@@ -31,7 +31,7 @@
 
 
             <div class="mb-5">
-                <input type="submit" class="mx-5 btn-success mt-5" value="INVIA">
+                <input type="submit" class="mx-5 btn-success mt-5" value="PROCEDI ALL'ORDINE">
 
 
             </div>
@@ -39,7 +39,7 @@
 
         </form>
             <div>
-                <h2 class="py-4">IL TUO RIEPILOGO</h2>
+                <h2 class="py-2">IL TUO RIEPILOGO</h2>
                 <div v-for="dish in cart" :key="dish.id">
                 <span class="dish">{{ dish.name }}</span>
                         <span class="count">q.{{ dish.count }} =</span>
@@ -106,8 +106,8 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 70%;
     background-color: #fff;
     border-radius: 10px;
     z-index: 999;
