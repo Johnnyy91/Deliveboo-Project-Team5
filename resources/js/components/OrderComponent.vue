@@ -23,6 +23,16 @@
 
 
         </form>
+            <div>
+                <h2 class="pt-5">IL TUO RIEPILOGO</h2>
+                <div v-for="dish in cart" :key="dish.id">
+                <span class="dish">Prezzo Totale: {{(dish.count * dish.price) }} Euro</span>
+
+            </div>
+
+
+            </div>
+
     </div>
 </template>
 <script>

@@ -341,7 +341,15 @@ var render = function render() {
       type: "submit",
       value: "Send"
     }
-  })])]);
+  })]), _vm._v(" "), _c("div", [_c("h2", {
+    staticClass: "pt-5"
+  }, [_vm._v("IL TUO RIEPILOGO")]), _vm._v(" "), _vm._l(_vm.cart, function (dish) {
+    return _c("div", {
+      key: dish.id
+    }, [_c("span", {
+      staticClass: "dish"
+    }, [_vm._v("Prezzo Totale: " + _vm._s(dish.count * dish.price) + " Euro")])]);
+  })], 2)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
