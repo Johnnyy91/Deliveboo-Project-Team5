@@ -20,11 +20,6 @@ const router = new VueRouter({
           name: 'dishes',
           component: () => import('./components/MenuComponent.vue')
         },
-      {
-        path: '/order',
-        name: 'order',
-        component: () => import('./components/OrderComponent.vue')
-      },
         { path: '*' ,
           name: "404" ,
           component: () => import('./components/notFound.vue')
