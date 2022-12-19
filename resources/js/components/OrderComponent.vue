@@ -9,13 +9,13 @@
             <!-- <input type="hidden" name="_token" v-bind:value="csrf"> -->
 
             <div>
-                <label for="name">Nome Utente</label>
+                <label for="name">Destinatario</label>
                 <input v-model="email" type="name" id="name" name="name" >
 
             </div>
 
             <div>
-                <label for="email">Email Utente</label>
+                <label for="email">Email</label>
                 <input v-model="email" type="email" id="email" name="email_client" >
 
             </div>
@@ -24,7 +24,7 @@
 
 
             <div>
-                <label for="address">Indirizzo Utente</label>
+                <label for="address">Indirizzo</label>
                 <input v-model="address" type="text" id="address" name="address_client">
 
             </div>
