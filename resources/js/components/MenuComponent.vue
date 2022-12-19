@@ -59,9 +59,11 @@
                         <span class="price">price{{ formater(dish.count * dish.price) }}</span>
                     </div>
                     <div>Totale:{{ totalPrice() }}</div>
+                    <!-- <router-link :to="{name:'order',params:{cart}} " class="btn btn-danger mt-5">Ordina</router-link> -->
+                    <button class="btn btn-danger mt-5" @click="orderClick()">Ordina</button>
+                    <OrderComponent v-if="validation"/>
                 </div>
             </div>
-
         </div>
 
     </div>
@@ -69,12 +71,17 @@
 
 </template>
 <script>
+import OrderComponent from './OrderComponent.vue';
 export default {
     name: 'MenuComponent',
+    components: {
+        OrderComponent
+    },
     data() {
         return {
             dishes: [],
             cart: [],
+            validation:false
         }
     },
     mounted() {
@@ -142,6 +149,11 @@ export default {
                 sum += dish.price * dish.count;
             });
             return this.formater(sum);
+        },
+        orderClick(){
+            console.log('before', this.validation);
+            this.validation=true;
+            console.log('after' , this.validation);
         }
     },
 }
