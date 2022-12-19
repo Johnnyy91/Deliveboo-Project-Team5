@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 use Error;
 use App\Restaurant;
 use App\Typology;
+use App\Order;
 
 class FrontendController extends Controller{
 
 
     public function index () {
+        # code for all restaurants
         try {
             $r = Restaurant::query()->get();
             for ($i=0; $i < count($r); $i++) {
@@ -40,7 +42,7 @@ class FrontendController extends Controller{
 
 
     public function show($slug) {
-
+        # code for restaurant with typologies associate
         $restaurants = Restaurant::with(['typologies'])->get();
         $data = [];
 
@@ -54,6 +56,12 @@ class FrontendController extends Controller{
         // http://127.0.0.1:8000/api/restaurant/paperino //paperino sta per lo slug del ristorante
         // dd($restaurants);
         return response($data);
+    }
+
+
+    public function store(Request $request)
+    {
+        # code for order create
     }
 }
 
