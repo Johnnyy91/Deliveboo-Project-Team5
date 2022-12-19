@@ -13,17 +13,66 @@ __webpack_require__.r(__webpack_exports__);
   name: 'MenuComponent',
   data: function data() {
     return {
-      dishes: []
+      dishes: [],
+      cart: []
     };
   },
   mounted: function mounted() {
     var _this = this;
     axios.get('/api/menu/' + this.$route.params.slug).then(function (_ref) {
       var data = _ref.data;
-      console.log('ciao');
       console.log(data);
       _this.dishes = data.results;
     });
+  },
+  methods: {
+    addDish: function addDish(dish) {
+      //some ritorna un booleano se nel primo par (array)
+      var dishes_exist = this.cart.some(function (cart_dish) {
+        return cart_dish.id == dish.id;
+      });
+      console.log(dishes_exist);
+      if (!dishes_exist) {
+        this.cart.push(dish);
+        dish.count = 1;
+        console.log('dish.count', dish.count);
+      } else {
+        var dish_index = this.cart.findIndex(function (cart_dish) {
+          return cart_dish.id == dish.id;
+        });
+        var dish_selected = this.cart[dish_index];
+        dish_selected.count++;
+        this.cart.splice(dish_index, 1, dish_selected);
+
+        // console.log('dish.count', dish.count);
+        // console.log('dish.find', dish_find);
+      }
+    },
+    removeDish: function removeDish(dish) {
+      var dishes_exist = this.cart.some(function (cart_dish) {
+        return cart_dish.id == dish.id;
+      });
+      if (dishes_exist) {
+        var dish_index = this.cart.findIndex(function (cart_dish) {
+          return cart_dish.id == dish.id;
+        });
+        dish.count = 0;
+        this.cart.splice(dish_index, 1);
+      }
+    },
+    formater: function formater(number) {
+      return new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR"
+      }).format(number);
+    },
+    totalPrice: function totalPrice() {
+      var sum = 0;
+      this.cart.forEach(function (dish) {
+        sum += dish.price * dish.count;
+      });
+      return this.formater(sum);
+    }
   }
 });
 
@@ -69,42 +118,54 @@ var render = function render() {
       }
     }), _vm._v(" "), _c("h5", [_vm._v("Ingredienti:" + _vm._s(dish.ingredients))]), _vm._v(" "), _c("h4", {
       staticClass: "py-3"
-    }, [_vm._v("Prezzo:" + _vm._s(dish.price))])]), _vm._v(" "), _vm._m(0, true)])])]);
-  })], 2), _vm._v(" "), _vm._m(1)]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "button-area d-flex my-5 py-5"
-  }, [_c("label", {
-    attrs: {
-      "for": "food"
-    }
-  }, [_vm._v("Pezzi:")]), _vm._v(" "), _c("input", {
-    attrs: {
-      type: "number",
-      id: "food",
-      name: "food",
-      min: "1",
-      max: "100"
-    }
-  }), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-info mx-5"
-  }, [_vm._v("Aggiungi")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-danger mx-5"
-  }, [_vm._v("Rimuovi")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
+    }, [_vm._v("Prezzo:" + _vm._s(dish.price))])]), _vm._v(" "), _c("div", {
+      staticClass: "button-area d-flex my-5 py-5"
+    }, [_c("label", {
+      attrs: {
+        "for": "food"
+      }
+    }, [_vm._v("Pezzi:")]), _vm._v(" "), _c("input", {
+      attrs: {
+        type: "number",
+        id: "food",
+        name: "food",
+        min: "1",
+        max: "100"
+      }
+    }), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-info mx-5",
+      on: {
+        click: function click($event) {
+          return _vm.addDish(dish);
+        }
+      }
+    }, [_vm._v("\n                            Aggiungi\n                        ")]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-danger mx-5",
+      on: {
+        click: function click($event) {
+          return _vm.removeDish(dish);
+        }
+      }
+    }, [_vm._v("\n                            Rimuovi\n                        ")])])])])]);
+  })], 2), _vm._v(" "), _c("div", {
     staticClass: "text-center pt-5"
   }, [_c("h1", {
     staticClass: "pb-2"
   }, [_vm._v("IL TUO CARRELLO")]), _vm._v(" "), _c("div", {
     staticClass: "card-container d-flex justify-content-center align-items-center"
-  }, [_c("div", [_c("h1", [_vm._v("VUOTO")])])])]);
-}];
+  }, [_vm.cart.length == 0 ? _c("div", [_c("h1", [_vm._v("VUOTO")])]) : _c("div", [_vm._l(_vm.cart, function (dish) {
+    return _c("div", {
+      key: dish.id
+    }, [_c("span", {
+      staticClass: "dish"
+    }, [_vm._v(_vm._s(dish.name))]), _vm._v(" "), _c("span", {
+      staticClass: "count"
+    }, [_vm._v("q." + _vm._s(dish.count))]), _c("br"), _vm._v(" "), _c("span", {
+      staticClass: "price"
+    }, [_vm._v("price" + _vm._s(_vm.formater(dish.count * dish.price)))])]);
+  }), _vm._v(" "), _c("div", [_vm._v("Totale:" + _vm._s(_vm.totalPrice()))])], 2)])])]);
+};
+var staticRenderFns = [];
 render._withStripped = true;
 
 
