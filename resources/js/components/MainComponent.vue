@@ -15,7 +15,7 @@
 
                 <div class="fl-typologies d-flex mb-5 justify-content-between">
                 <div v-for="item in typologies" :key="item.id">
-                    <button @click="showtipology($event)" :value="item.id" type="button" class="btn btn-lg fl-button text-capitalize"> {{item.name}}</button>
+                    <button @click="showtipology($event)" :value="item.slug" type="button" class="btn btn-lg fl-button text-capitalize"> {{item.name}}</button>
                 </div>
             </div>
         </section>
@@ -28,12 +28,18 @@ import RestaurantDetailsVue from './RestaurantDetails.vue';
 
     export default {
     name: 'MainComponent',
+
     components: {WorkWithUsComponentVue, RestaurantDetailsVue},
+
     data(){
-    return {
-        restaurants: undefined,
-        typologies : undefined
+        return {
+            restaurants: undefined,
+            typologies : undefined
     }
+    },
+
+    mounted() {
+        this.showRestaurant('api/restaurant')
     },
 
     methods: {
@@ -42,40 +48,15 @@ import RestaurantDetailsVue from './RestaurantDetails.vue';
                 this.restaurants = data.results;
                 this.typologies = data.typologies;
                 console.log(data.results);
-
-
             })
         },
 
-        showtype(url){
-            axios.get(url).then(({data})=>{
-                console.log(url);
-                console.log(data)
-            }
-            )
-        },
-
-
         showtipology(e){
-            let id = e.target.value;
-            this.$router.push({path:'/restaurant/' + id })
-            this.showtype('api/restaurant/' + id);
+            let slug = e.target.value;
+            this.$router.push({path:'/restaurant/' + slug })
+            this.showtype('api/restaurant/' + slug);
             console.log(id);
         },
-
-    },
-
-
-    mounted() {
-        this.showRestaurant('api/restaurant')
-            // axios.get('api/restaurant').then(({data})=>{
-            //     this.restaurants = data.results;
-            //     this.typologies = data.typologies;
-            //     console.log(data.results);
-
-
-            // })
-
 
     }
     }
