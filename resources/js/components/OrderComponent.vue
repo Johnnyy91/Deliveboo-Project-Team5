@@ -1,28 +1,57 @@
 <template>
     <div class="pt-5 text-center buyClass">
     <div class="flex flex-row-reverse w-100">
-    <button @click="closeMod">X</button>
+    <button class="btn btn-danger mb-5" @click="closeMod">CHIUDI</button>
     </div>
-        <form ref="order"  @submit.prevent="clicked()">
+        <form ref="order" class="d-flex justify-content-center flex-column" @submit.prevent="clicked()">
 
             <!-- TOKEN CSRF -->
             <!-- <input type="hidden" name="_token" v-bind:value="csrf"> -->
 
-            <!-- EMAIL -->
-            <label for="email">Email Client</label>
-            <input v-model="email" type="email" id="email" name="email_client" >
+            <div>
+                <label for="name">Nome Utente</label>
+                <input v-model="email" type="name" id="name" name="name" >
+
+            </div>
+
+            <div>
+                <label for="email">Email Utente</label>
+                <input v-model="email" type="email" id="email" name="email_client" >
+
+            </div>
 
 
 
-            <!-- ADDRESS -->
-            <label for="address">Address Client</label>
-            <input v-model="address" type="text" id="address" name="address_client">
+
+            <div>
+                <label for="address">Indirizzo Utente</label>
+                <input v-model="address" type="text" id="address" name="address_client">
+
+            </div>
 
 
-            <input type="submit" value="Send">
+            <div class="mb-5">
+                <input type="submit" class="mx-5 btn-success mt-5" value="PROCEDI ALL'ORDINE">
+
+
+            </div>
 
 
         </form>
+            <div>
+                <h2 class="py-2">IL TUO RIEPILOGO</h2>
+                <div v-for="dish in cart" :key="dish.id">
+                <span class="dish">{{ dish.name }}</span>
+                        <span class="count">q.{{ dish.count }} =</span>
+                        <span class="price">Prezzo: {{ formater(dish.count * dish.price) }}</span>
+
+
+
+                </div>
+                        <hr>
+                    <div class="py-1">Prezzo Totale da Pagare:  {{ totalPrice() }}</div>
+            </div>
+
     </div>
 </template>
 <script>
@@ -53,7 +82,20 @@ export default {
         },
         closeMod() {
             this.$parent.$data.validation = false;
-        }
+        },
+        formater(number) {
+            return new Intl.NumberFormat("de-DE", {
+                style: "currency",
+                currency: "EUR",
+            }).format(number)
+        },
+        totalPrice() {
+            let sum = 0;
+            this.cart.forEach(dish => {
+                sum += dish.price * dish.count;
+            });
+            return this.formater(sum);
+        },
     },
 }
 </script>
@@ -64,13 +106,14 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 70%;
     background-color: #fff;
     border-radius: 10px;
     z-index: 999;
 
 
 }
+
 
 </style>

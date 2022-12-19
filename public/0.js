@@ -131,6 +131,19 @@ __webpack_require__.r(__webpack_exports__);
     },
     closeMod: function closeMod() {
       this.$parent.$data.validation = false;
+    },
+    formater: function formater(number) {
+      return new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR"
+      }).format(number);
+    },
+    totalPrice: function totalPrice() {
+      var sum = 0;
+      this.cart.forEach(function (dish) {
+        sum += dish.price * dish.count;
+      });
+      return this.formater(sum);
     }
   }
 });
@@ -275,22 +288,49 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "flex flex-row-reverse w-100"
   }, [_c("button", {
+    staticClass: "btn btn-danger mb-5",
     on: {
       click: _vm.closeMod
     }
-  }, [_vm._v("X")])]), _vm._v(" "), _c("form", {
+  }, [_vm._v("CHIUDI")])]), _vm._v(" "), _c("form", {
     ref: "order",
+    staticClass: "d-flex justify-content-center flex-column",
     on: {
       submit: function submit($event) {
         $event.preventDefault();
         return _vm.clicked();
       }
     }
-  }, [_c("label", {
+  }, [_c("div", [_c("label", {
+    attrs: {
+      "for": "name"
+    }
+  }, [_vm._v("Nome Utente")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.email,
+      expression: "email"
+    }],
+    attrs: {
+      type: "name",
+      id: "name",
+      name: "name"
+    },
+    domProps: {
+      value: _vm.email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.email = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("div", [_c("label", {
     attrs: {
       "for": "email"
     }
-  }, [_vm._v("Email Client")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Email Utente")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -311,11 +351,11 @@ var render = function render() {
         _vm.email = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("label", {
+  })]), _vm._v(" "), _c("div", [_c("label", {
     attrs: {
       "for": "address"
     }
-  }, [_vm._v("Address Client")]), _vm._v(" "), _c("input", {
+  }, [_vm._v("Indirizzo Utente")]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -336,14 +376,35 @@ var render = function render() {
         _vm.address = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("input", {
+  })]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c("div", [_c("h2", {
+    staticClass: "py-2"
+  }, [_vm._v("IL TUO RIEPILOGO")]), _vm._v(" "), _vm._l(_vm.cart, function (dish) {
+    return _c("div", {
+      key: dish.id
+    }, [_c("span", {
+      staticClass: "dish"
+    }, [_vm._v(_vm._s(dish.name))]), _vm._v(" "), _c("span", {
+      staticClass: "count"
+    }, [_vm._v("q." + _vm._s(dish.count) + " =")]), _vm._v(" "), _c("span", {
+      staticClass: "price"
+    }, [_vm._v("Prezzo: " + _vm._s(_vm.formater(dish.count * dish.price)))])]);
+  }), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "py-1"
+  }, [_vm._v("Prezzo Totale da Pagare:  " + _vm._s(_vm.totalPrice()))])], 2)]);
+};
+var staticRenderFns = [function () {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div", {
+    staticClass: "mb-5"
+  }, [_c("input", {
+    staticClass: "mx-5 btn-success mt-5",
     attrs: {
       type: "submit",
-      value: "Send"
+      value: "PROCEDI ALL'ORDINE"
     }
-  })])]);
-};
-var staticRenderFns = [];
+  })]);
+}];
 render._withStripped = true;
 
 
@@ -380,7 +441,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.buyClass{\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    width: 50%;\n    height: 50%;\n    background-color: #fff;\n    border-radius: 10px;\n    z-index: 999;\n}\n\n", ""]);
+exports.push([module.i, "\n.buyClass{\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    width: 60%;\n    height: 70%;\n    background-color: #fff;\n    border-radius: 10px;\n    z-index: 999;\n}\n\n\n", ""]);
 
 // exports
 
