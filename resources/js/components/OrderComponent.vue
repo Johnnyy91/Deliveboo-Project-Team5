@@ -9,7 +9,13 @@
             <!-- <input type="hidden" name="_token" v-bind:value="csrf"> -->
 
             <div>
-                <label for="email">Email Client</label>
+                <label for="name">Nome Utente</label>
+                <input v-model="email" type="name" id="name" name="name" >
+
+            </div>
+
+            <div>
+                <label for="email">Email Utente</label>
                 <input v-model="email" type="email" id="email" name="email_client" >
 
             </div>
@@ -18,21 +24,24 @@
 
 
             <div>
-                <label for="address">Address Client</label>
+                <label for="address">Indirizzo Utente</label>
                 <input v-model="address" type="text" id="address" name="address_client">
 
             </div>
 
 
+            <div class="mb-5">
+                <input type="submit" class="mx-5 btn-success mt-5" value="INVIA">
 
-            <input type="submit"  value="Send">
+
+            </div>
 
 
         </form>
             <div>
                 <h2 class="pt-5">IL TUO RIEPILOGO</h2>
                 <div v-for="dish in cart" :key="dish.id">
-                <span class="dish">Prezzo Totale: {{(dish.count * dish.price) }} Euro</span>
+                <span class="dish">Prezzo Totale: {{(dish.count * dish.price) }} €</span>
 
             </div>
 
@@ -88,5 +97,6 @@ export default {
 
 
 }
+
 
 </style>
