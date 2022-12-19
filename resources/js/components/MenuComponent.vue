@@ -61,7 +61,7 @@
                     <div>Totale:{{ totalPrice() }}</div>
                     <!-- <router-link :to="{name:'order',params:{cart}} " class="btn btn-danger mt-5">Ordina</router-link> -->
                     <button class="btn btn-danger mt-5" @click="orderClick()">Ordina</button>
-                    <OrderComponent v-if="validation"/>
+                    <OrderComponent v-if="validation" :cart="cart"/>
                 </div>
             </div>
         </div>
