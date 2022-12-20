@@ -17,5 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('restaurant', 'api\FrontendController'); // abilito il controller api
 Route::get('menu/{slug}', 'api\DishController@show');
+Route::post('process-payment', 'api\BraintreeController@createTransaction');
 //Route::get('/restaurants/{id}','api\FrontendController@show');
 Route::get('test', function(){return response('ciao');});
