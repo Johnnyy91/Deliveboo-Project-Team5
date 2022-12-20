@@ -1,9 +1,22 @@
 import router from './router';
 import Vue from 'vue'
 import App from './views/App'
-import VueBraintree from 'vue-braintree'
 
-Vue.use(VueBraintree)
+var dropin = require('braintree-web-drop-in');
+
+dropin.create({
+    authorization:'sandbox_gpxc3my7_nr7dbky87tmcnygt',
+    container:'#dropin-container',
+}, function(createErr, instance){
+
+    button.addEventListener('click', function () {
+        instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+          // Submit payload.nonce to your server
+        });
+      });
+
+});
+
 
  require('./bootstrap');
 
