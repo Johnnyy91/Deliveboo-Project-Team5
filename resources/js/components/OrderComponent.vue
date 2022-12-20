@@ -1,8 +1,8 @@
 <template>
     <div class="pt-5 text-center buyClass">
-    <div class="flex flex-row-reverse w-100">
-    <button class="btn btn-danger mb-5" @click="closeMod">CHIUDI</button>
-    </div>
+        <div class="flex flex-row-reverse w-100">
+            <button class="btn btn-danger mb-5" @click="closeMod">CHIUDI</button>
+        </div>
         <form ref="order" class="d-flex justify-content-center flex-column" @submit.prevent="clicked()">
 
             <!-- TOKEN CSRF -->
@@ -10,13 +10,13 @@
 
             <div>
                 <label for="name">Destinatario</label>
-                <input v-model="name" type="name" id="name" name="name" >
+                <input v-model="name" type="name" id="name" name="name">
 
             </div>
 
             <div>
                 <label for="email">Email</label>
-                <input v-model="email" type="email" id="email" name="email_client" >
+                <input v-model="email" type="email" id="email" name="email_client">
 
             </div>
 
@@ -38,48 +38,99 @@
 
 
         </form>
-            <div>
-                <h2 class="py-2">IL TUO RIEPILOGO</h2>
-                <div v-for="dish in cart" :key="dish.id">
+        <div>
+            <h2 class="py-2">IL TUO RIEPILOGO</h2>
+            <div v-for="dish in cart" :key="dish.id">
                 <span class="dish">{{ dish.name }}</span>
-                        <span class="count">q.{{ dish.count }} =</span>
-                        <span class="price">Prezzo: {{ formater(dish.count * dish.price) }}</span>
+                <span class="count">q.{{ dish.count }} =</span>
+                <span class="price">Prezzo: {{ formater(dish.count * dish.price) }}</span>
 
-                </div>
-
-                <v-braintree
-                        token="sandbox_gpxc3my7_nr7dbky87tmcnygt"
-                        @success="onSuccess"
-                        @error="onError"
-                    ></v-braintree>
-
-                        <hr>
-                    <div class="py-1">Prezzo Totale da Pagare:  {{ totalPrice() }}</div>
             </div>
+
+
+            <hr>
+            <div class="py-1">Prezzo Totale da Pagare: {{ totalPrice() }}</div>
+            <div id="drop-in-container"></div>
+            <button v-if="!payload" @click="submit()">Submit Payment Method</button>
+            <button v-else  @click="processPayment()">PAGA</button>
+        </div>
+
+
 
     </div>
 </template>
 <script>
 export default {
     name: 'OrderComponent',
-    data(){
-          return {
+    data() {
+        return {
             //csrf token
             //  csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
 
-            address:undefined,
-            email:undefined
-       }
+            address: undefined,
+            email: undefined,
+            payload: undefined,
+
+            token: 'sandbox_gpxc3my7_nr7dbky87tmcnygt',
+        }
+
+
+
     },
     mounted() {
-        console.log(this.cart)
+        this.setupDropin()
     },
     props: {
         cart: Array,
     },
 
     methods: {
-        clicked(){
+
+        setupDropin() {
+            braintree.dropin.create({
+                authorization: this.token,
+                container: '#drop-in-container'
+            }, (createErr, instance) => {
+                if (createErr) {
+                    console.error(createErr);
+                    return;
+                }
+
+                this.instance = instance;
+            });
+        },
+        submit() {
+            this.instance.requestPaymentMethod((requestPaymentMethodErr, payload) => {
+                if (requestPaymentMethodErr) {
+                    console.error(requestPaymentMethodErr);
+                    return;
+                }
+                this.payload = payload;
+            })
+        },
+        processPayment() {
+            axios.post('/api/process-payment', {
+                payload: this.payload,
+                amount: this.totalPrice(true),
+                name: "pinco pallino",
+                email: 'pinco@gmail.com',
+                address: 'via roma 1',
+                restaurant: this.$route.params.slug,
+                //TODO ANDARE SUL CONTROLLER
+                cart: this.cart,
+
+            }).then(res => {
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            })
+        },
+
+
+
+
+
+        clicked() {
             console.log(this.email)
             console.log(this.address)
 
@@ -94,40 +145,33 @@ export default {
                 currency: "EUR",
             }).format(number)
         },
-        totalPrice() {
+        totalPrice(format = false) {
             let sum = 0;
             this.cart.forEach(dish => {
                 sum += dish.price * dish.count;
             });
-            return this.formater(sum);
+            if (format) {
+                return this.formater(sum);
+            }
+            else
+            return sum;
         },
-
-        onSuccess (payload) {
-        let nonce = payload.nonce;
-        // Do something great with the nonce...
-        },
-        onError (error) {
-        let message = error.message;
-        // Whoops, an error has occured while trying to get the nonce
-    }
     },
 }
 </script>
 <style>
-
-.buyClass{
+.buyClass {
     position: fixed;
-    top: 50%;
+    top: 5rem;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     width: 60%;
     height: 70%;
     background-color: #fff;
     border-radius: 10px;
     z-index: 999;
+    overflow-y: auto;
 
 
 }
-
-
 </style>
