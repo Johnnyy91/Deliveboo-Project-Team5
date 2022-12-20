@@ -33,7 +33,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addDish: function addDish(dish, quantity) {
-      //some ritorna un booleano se nel primo par (array)
+      // 'some()' ritorna un booleano se è presente nell' array
       var dishes_exist = this.cart.some(function (cart_dish) {
         return cart_dish.id == dish.id;
       });
@@ -111,16 +111,57 @@ __webpack_require__.r(__webpack_exports__);
       //  csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
 
       address: undefined,
-      email: undefined
+      email: undefined,
+      payload: undefined,
+      token: 'sandbox_gpxc3my7_nr7dbky87tmcnygt'
     };
   },
   mounted: function mounted() {
-    console.log(this.cart);
+    this.setupDropin();
   },
   props: {
     cart: Array
   },
   methods: {
+    setupDropin: function setupDropin() {
+      var _this = this;
+      braintree.dropin.create({
+        authorization: this.token,
+        container: '#drop-in-container'
+      }, function (createErr, instance) {
+        if (createErr) {
+          console.error(createErr);
+          return;
+        }
+        _this.instance = instance;
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
+      this.instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+        if (requestPaymentMethodErr) {
+          console.error(requestPaymentMethodErr);
+          return;
+        }
+        _this2.payload = payload;
+      });
+    },
+    processPayment: function processPayment() {
+      axios.post('/api/process-payment', {
+        payload: this.payload,
+        amount: this.totalPrice(true),
+        name: "pinco pallino",
+        email: 'pinco@gmail.com',
+        address: 'via roma 1',
+        restaurant: this.$route.params.slug,
+        //TODO ANDARE SUL CONTROLLER
+        cart: this.cart
+      }).then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.log(err);
+      });
+    },
     clicked: function clicked() {
       console.log(this.email);
       console.log(this.address);
@@ -135,19 +176,14 @@ __webpack_require__.r(__webpack_exports__);
       }).format(number);
     },
     totalPrice: function totalPrice() {
+      var format = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       var sum = 0;
       this.cart.forEach(function (dish) {
         sum += dish.price * dish.count;
       });
-      return this.formater(sum);
-    },
-    onSuccess: function onSuccess(payload) {
-      var nonce = payload.nonce;
-      // Do something great with the nonce...
-    },
-    onError: function onError(error) {
-      var message = error.message;
-      // Whoops, an error has occured while trying to get the nonce
+      if (format) {
+        return this.formater(sum);
+      } else return sum;
     }
   }
 });
@@ -313,8 +349,8 @@ var render = function render() {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: _vm.email,
-      expression: "email"
+      value: _vm.name,
+      expression: "name"
     }],
     attrs: {
       type: "name",
@@ -322,12 +358,12 @@ var render = function render() {
       name: "name"
     },
     domProps: {
-      value: _vm.email
+      value: _vm.name
     },
     on: {
       input: function input($event) {
         if ($event.target.composing) return;
-        _vm.email = $event.target.value;
+        _vm.name = $event.target.value;
       }
     }
   })]), _vm._v(" "), _c("div", [_c("label", {
@@ -392,17 +428,25 @@ var render = function render() {
     }, [_vm._v("q." + _vm._s(dish.count) + " =")]), _vm._v(" "), _c("span", {
       staticClass: "price"
     }, [_vm._v("Prezzo: " + _vm._s(_vm.formater(dish.count * dish.price)))])]);
-  }), _vm._v(" "), _c("v-braintree", {
-    attrs: {
-      token: "sandbox_gpxc3my7_nr7dbky87tmcnygt"
-    },
-    on: {
-      success: _vm.onSuccess,
-      error: _vm.onError
-    }
   }), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "py-1"
-  }, [_vm._v("Prezzo Totale da Pagare:  " + _vm._s(_vm.totalPrice()))])], 2)]);
+  }, [_vm._v("Prezzo Totale da Pagare: " + _vm._s(_vm.totalPrice()))]), _vm._v(" "), _c("div", {
+    attrs: {
+      id: "drop-in-container"
+    }
+  }), _vm._v(" "), !_vm.payload ? _c("button", {
+    on: {
+      click: function click($event) {
+        return _vm.submit();
+      }
+    }
+  }, [_vm._v("Submit Payment Method")]) : _c("button", {
+    on: {
+      click: function click($event) {
+        return _vm.processPayment();
+      }
+    }
+  }, [_vm._v("PAGA")])], 2)]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -453,7 +497,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.buyClass{\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    width: 60%;\n    height: 70%;\n    background-color: #fff;\n    border-radius: 10px;\n    z-index: 999;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.buyClass {\n    position: fixed;\n    top: 5rem;\n    left: 50%;\n    transform: translateX(-50%);\n    width: 60%;\n    height: 70%;\n    background-color: #fff;\n    border-radius: 10px;\n    z-index: 999;\n    overflow-y: auto;\n}\n", ""]);
 
 // exports
 
