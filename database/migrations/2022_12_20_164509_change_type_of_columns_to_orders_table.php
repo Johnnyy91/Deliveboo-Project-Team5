@@ -3,8 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Doctrine\DBAL\Driver\PDOMySql\Driver;
 
-class AddColumnIdRestaurantToOrdersTable extends Migration
+class ChangeTypeOfColumnsToOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +16,9 @@ class AddColumnIdRestaurantToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //
-           $table->unsignedBigInteger('restaurant_id')->nullable();
-           $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
-
+            $table->dropUnique(['address_client']);
+            $table->dropUnique(['email_client']);
+            // $table->dropUnique(['address_client','email_client']);
         });
     }
 
@@ -30,7 +31,6 @@ class AddColumnIdRestaurantToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //
-            $table->dropForeign(['restaurant_id']);
         });
     }
 }

@@ -109,7 +109,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       //csrf token
       //  csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-
+      name: undefined,
       address: undefined,
       email: undefined,
       payload: undefined,
@@ -150,11 +150,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/process-payment', {
         payload: this.payload,
         amount: this.totalPrice(true),
-        name: "pinco pallino",
-        email: 'pinco@gmail.com',
-        address: 'via roma 1',
+        name: this.name,
+        email: this.email,
+        address: this.address,
         restaurant: this.$route.params.slug,
-        //TODO ANDARE SUL CONTROLLER
         cart: this.cart
       }).then(function (res) {
         console.log(res);
@@ -169,20 +168,14 @@ __webpack_require__.r(__webpack_exports__);
     closeMod: function closeMod() {
       this.$parent.$data.validation = false;
     },
-    formater: function formater(number) {
-      return new Intl.NumberFormat("de-DE", {
-        style: "currency",
-        currency: "EUR"
-      }).format(number);
-    },
     totalPrice: function totalPrice() {
       var format = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       var sum = 0;
       this.cart.forEach(function (dish) {
         sum += dish.price * dish.count;
       });
-      if (format) {
-        return this.formater(sum);
+      if (!format) {
+        return this.$parent.formater(sum);
       } else return sum;
     }
   }
@@ -427,7 +420,7 @@ var render = function render() {
       staticClass: "count"
     }, [_vm._v("q." + _vm._s(dish.count) + " =")]), _vm._v(" "), _c("span", {
       staticClass: "price"
-    }, [_vm._v("Prezzo: " + _vm._s(_vm.formater(dish.count * dish.price)))])]);
+    }, [_vm._v("Prezzo: " + _vm._s(_vm.$parent.formater(dish.count * dish.price)))])]);
   }), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
     staticClass: "py-1"
   }, [_vm._v("Prezzo Totale da Pagare: " + _vm._s(_vm.totalPrice()))]), _vm._v(" "), _c("div", {
