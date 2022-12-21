@@ -5,12 +5,12 @@
             </div >
                 <div class="d-flex justify-content-center mb-5">
 
-                    <img src="https://www.pngmart.com/files/5/Hamburger-PNG-Transparent-Image.png" alt="" class="img-fluid">
+                    <img src="https://www.pngmart.com/files/5/Hamburger-PNG-Transparent-Image.png" alt="" class="img-fluid hamb">
 
                 </div>
 
                 <div class="fl-typologies d-flex mb-5 justify-content-between row">
-                <div class="col-lg col-md-4 text-center mt-3" v-for="item in typologies" :key="item.id">
+                <div class="col-lg col-md-4 text-center" v-for="item in typologies" :key="item.id">
                     <button @click="showtipology($event)" :value="item.slug" type="button" class="btn btn-lg btn-success text-capitalize"> {{item.name}}</button>
                 </div>
             </div>
@@ -83,5 +83,9 @@
         font-size: 50px;
     }
 
+    .hamb {
+        width: 35%;
+        height: 35%;
+    }
 
 </style>
