@@ -1,4 +1,4 @@
-@extends('layouts.app') <!--estendo layout.app-->endforeach
+@extends('layouts.app')
 
 
 
