@@ -1,7 +1,7 @@
 <template>
         <section class="container">
             <div>
-            <h1 class="text-center mb-5">COSA VORRESTI MANGIARE ?</h1>
+            <h1 class="text-center mb-5 text-success">COSA VORRESTI MANGIARE ?</h1>
             </div >
                 <div class="d-flex justify-content-center mb-5">
 
@@ -11,7 +11,7 @@
 
                 <div class="fl-typologies d-flex mb-5 justify-content-between row">
                 <div class="col-lg col-md-4 text-center mt-3" v-for="item in typologies" :key="item.id">
-                    <button @click="showtipology($event)" :value="item.slug" type="button" class="btn btn-lg fl-button text-capitalize"> {{item.name}}</button>
+                    <button @click="showtipology($event)" :value="item.slug" type="button" class="btn btn-lg btn-success text-capitalize"> {{item.name}}</button>
                 </div>
             </div>
         </section>
@@ -65,7 +65,6 @@
 }
 
     h1 {
-        color: $fl-primary;
         font-family: 'Kanit', sans-serif;
         font-weight: 400;
     }
