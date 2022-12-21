@@ -23,8 +23,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand logo " href="{{ url('/') }}">
+                    <img src="./images/DeliveBoo-Logo.png" alt="logo" class="fl-logo d-flex"> <span>AREA RISERVATA</span>
+
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -78,3 +79,15 @@
     </div>
 </body>
 </html>
+
+<style>
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    img {
+        width: 40px;
+        padding-right: 10px;
+    }
+</style>
