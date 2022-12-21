@@ -15,8 +15,9 @@ class AddColumnIdRestaurantToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('restaurant_id')->nullable();
-            $table->foreign('restaurant_id')->references('id')->on('orders');
+           $table->unsignedBigInteger('restaurant_id')->nullable();
+           $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
+
         });
     }
 
@@ -29,7 +30,7 @@ class AddColumnIdRestaurantToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //
-            $table->dropForeign('orders_restaurant_id_foreign');
+            $table->dropForeign(['restaurant_id']);
         });
     }
 }
