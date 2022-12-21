@@ -16,7 +16,7 @@
     <form class="mt-3" method="POST" action="{{ route('admin.dishes.destroy', $item->id) }}">
         @csrf
         @method('DELETE')
-        <input class="btn btn-success mb-3"onclick="return confirm('Do you really want to delete this dish?')" type="submit" value="Elimina">
+        <input class="btn btn-success mb-3"onclick="return confirm('Vuoi davvero eliminare il piatto?')" type="submit" value="Elimina">
     </form>
 
 
