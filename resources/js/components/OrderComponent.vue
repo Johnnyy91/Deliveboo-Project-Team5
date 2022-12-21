@@ -43,7 +43,7 @@
             <div v-for="dish in cart" :key="dish.id">
                 <span class="dish">{{ dish.name }}</span>
                 <span class="count">q.{{ dish.count }} =</span>
-                <span class="price">Prezzo: {{ formater(dish.count * dish.price) }}</span>
+                <span class="price">Prezzo: {{ $parent.formater(dish.count * dish.price) }}</span>
 
             </div>
 
@@ -52,7 +52,7 @@
             <div class="py-1">Prezzo Totale da Pagare: {{ totalPrice() }}</div>
             <div id="drop-in-container"></div>
             <button v-if="!payload" @click="submit()">Submit Payment Method</button>
-            <button v-else  @click="processPayment()">PAGA</button>
+            <button v-else @click="processPayment()">PAGA</button>
         </div>
 
 
@@ -126,35 +126,23 @@ export default {
             })
         },
 
-
-
-
-
         clicked() {
             console.log(this.email)
             console.log(this.address)
-
-
         },
         closeMod() {
             this.$parent.$data.validation = false;
-        },
-        formater(number) {
-            return new Intl.NumberFormat("de-DE", {
-                style: "currency",
-                currency: "EUR",
-            }).format(number)
         },
         totalPrice(format = false) {
             let sum = 0;
             this.cart.forEach(dish => {
                 sum += dish.price * dish.count;
             });
-            if (format) {
-                return this.formater(sum);
+            if (!format) {
+                return this.$parent.formater(sum);
             }
             else
-            return sum;
+                return sum;
         },
     },
 }
