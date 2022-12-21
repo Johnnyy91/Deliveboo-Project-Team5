@@ -30,11 +30,11 @@
             </div>
 
 
-            <div class="mb-5">
+            <!-- <div class="mb-5">
                 <input type="submit" class="mx-5 btn-success mt-5" value="PROCEDI ALL'ORDINE">
 
 
-            </div>
+            </div> -->
 
 
         </form>
