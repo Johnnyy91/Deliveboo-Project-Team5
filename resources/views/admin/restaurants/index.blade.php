@@ -140,17 +140,17 @@ nome ristorante:  {{$item->name}}
         </form>
 
         {{-- EDIT  --}}
-        <a class="btn btn-warning my-3 mx-3" href="{{ route('admin.restaurants.edit', $item->slug) }}">Edit Restaurant</a>
+        <a class="btn btn-warning my-3 mx-3" href="{{ route('admin.restaurants.edit', $item->slug) }}">Modifica Ristorante</a>
 
 
         {{-- ADD DISH--}}
-        <a class="btn btn-info my-3 mx-3" href="{{ route('admin.dishes.create') }}">Add Dish</a>
+        <a class="btn btn-info my-3 mx-3" href="{{ route('admin.dishes.create') }}">Aggiungi Piatto</a>
 
         {{-- VIEW MENU'--}}
-        <a class="btn btn-info my-3 mx-3" href="{{ route('admin.dishes.index') }}">View Menù</a>
+        <a class="btn btn-info my-3 mx-3" href="{{ route('admin.dishes.index') }}">Visualizza Menù</a>
 
         {{-- VIEW ORDERS --}}
-        <a class="btn btn-info my-3 mx-3" href="{{ route('admin.orders.index') }}">View orders</a>
+        <a class="btn btn-info my-3 mx-3" href="{{ route('admin.orders.index') }}">Visualizza Ordini</a>
 
     </div>
 
