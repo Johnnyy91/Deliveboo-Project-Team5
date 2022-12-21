@@ -26,7 +26,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="mt-3">
+            <div class="mt-3 px-2">
                 <h3 class="mt-3 pb-2">Porta Deliveboo con te</h3>
             </div>
         </section>
