@@ -1,16 +1,21 @@
 <template>
 
-    <header>
+    <header class="container-fluid">
         <div class="custom-shape-divider-top-1671124742">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
             </svg>
         </div>
-        <div class="container">
-            <nav class="w-100">
-                <div class="w-50 d-flex align-items-center">
-                    <img src="./images/DeliveBoo-Logo.png" alt="logo" class="fl-logo d-flex">
-                    <h2 class="title pt-3">DELIVEBOO</h2>
+        <div class="container-fluid">
+            <nav>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex">
+                        <img src="./images/DeliveBoo-Logo.png" alt="logo" class="fl-logo d-flex">
+                        <h2 class="title pt-3">DELIVEBOO</h2>
+                    </div>
+                    <div class="d-flex">
+                        <a class="btn btn-success my-3 mx-3" href='/admin/restaurants'>Add Dish</a>
+                    </div>
                 </div>
             </nav>
         </div>
