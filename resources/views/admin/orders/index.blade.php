@@ -3,20 +3,21 @@
 
 
 @section('content')
-@foreach ($groupedOrders as $groupedOrder)
-<div>
-    <h1>ORDINI:</h1>
-    <h2>Indirizzo Ordine: {{ $groupedOrder['address_client'] }}</h2>
-    <h3>Email Cliente: {{$groupedOrder['email_client']}}</h3>
-    <h3>Prezzo Totale: {{$groupedOrder['total_price']}} Euro</h3>
-    <div>Dettaglio ordine:
-        <div>
-            @foreach ($groupedOrder['dishes'] as $dish)
-                <div>{{ $dish['quantity'] }} {{$dish['name']}}</div>
-            @endforeach
-        </div>
-    </div>
 
+<div class="mx-5 ">
+        @foreach ($groupedOrders as $groupedOrder)
+            <h4>ORDINE:</h4>
+            <h5>Indirizzo Ordine: {{ $groupedOrder['address_client'] }}</h5>
+            <h6>Email Cliente: {{$groupedOrder['email_client']}}</h6>
+            <h6>Prezzo Totale: {{$groupedOrder['total_price']}} Euro</h6>
+                <div class="mb-4">Dettaglio ordine:
+                    <div>
+                        @foreach ($groupedOrder['dishes'] as $dish)
+                            <div>{{ $dish['quantity'] }} {{$dish['name']}}</div>
+                        @endforeach
+                    </div>
+                </div>
+        @endforeach
 </div>
-@endforeach
+
 @endsection
