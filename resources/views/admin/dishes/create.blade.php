@@ -2,7 +2,12 @@
 
 
 @section('content')
-<form class="text-center" action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
+<h1 class="text-center">AGGIUNGI UN PIATTO</h1>
+<div>
+
+
+</div>
+<form class="text-center py-5" action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div>
         <label for="name">Nome:</label>
@@ -57,7 +62,7 @@
         <label for="image">Img:</label>
         <input type="file" name="image">
     </div>
-    <input type="submit" value="Crea">
+    <input type="submit" class="btn btn-success" value="Crea">
 </form>
 
 
