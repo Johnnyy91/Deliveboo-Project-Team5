@@ -13,7 +13,8 @@
 
 {{-- CREATE --}}
 @if (!$val)
-<form action="{{ route('admin.restaurants.store') }}" method="post" enctype="multipart/form-data">
+<h1 class="text-center pb-5">AGGIUNGI IL TUO RISTORANTE !</h1>
+<form  class="text-center" action="{{ route('admin.restaurants.store') }}" method="post" enctype="multipart/form-data">
     @csrf
 
     {{-- NAME --}}
@@ -106,7 +107,10 @@
     </select>
 
     {{-- SUBMIT --}}
-    <input type="submit" value="Create">
+    <div>
+        <input type="submit" class="btn btn-success text-center px-5" value="Crea">
+    </div>
+
 </form>
 
  @else
@@ -116,31 +120,36 @@
 @if ($item->user_id == $user->id)
 
 
+<div class="text-center">
+    <h3>Nome Ristorante:  {{$item->name}}</h3>
+    <div>
+        Tipologia:
+        @foreach ($item->typologies as $typology)
+            {{$typology->name}}
+        @endforeach
+    </div>
 
-Nome Ristorante:  {{$item->name}}
-<div>
-    Tipologie:
-    @foreach ($item->typologies as $typology)
-        {{$typology->name}}
-    @endforeach
+
 </div>
-<div class="w-100">
-    <img class="w-25" src="{{asset('storage/'.$item->img)}}" alt="img">
+
+
+<div class="w-100 text-center">
+    <img class="w-50" src="{{asset('storage/'.$item->img)}}" alt="img">
 </div>
 
 
     {{-- DELETE --}}
 
-    <div class="d-flex">
+    <div class="d-flex button-restaurant">
 
         <form class="mt-3" method="POST" action="{{ route('admin.restaurants.destroy', $item->slug) }}">
             @csrf
             @method('DELETE')
-            <input class="btn btn-success mb-3"onclick="return confirm('Do you really want to delete this restaurant?')" type="submit" value="Elimina">
+            <input class="btn btn-danger mb-3"onclick="return confirm('Sei sicuro di voler eliminare il ristorante?')" type="submit" value="Elimina">
         </form>
 
         {{-- EDIT  --}}
-        <a class="btn btn-warning my-3 mx-3" href="{{ route('admin.restaurants.edit', $item->slug) }}">Modifica Ristorante</a>
+        <a class="btn btn-success my-3 mx-3" href="{{ route('admin.restaurants.edit', $item->slug) }}">Modifica Ristorante</a>
 
 
         {{-- ADD DISH--}}
@@ -166,3 +175,17 @@ Nome Ristorante:  {{$item->name}}
 @endsection
 
 
+<style>
+
+    label {
+        width: 60px;
+        padding-bottom: 10px;
+    }
+
+    .button-restaurant{
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+    }
+
+</style>

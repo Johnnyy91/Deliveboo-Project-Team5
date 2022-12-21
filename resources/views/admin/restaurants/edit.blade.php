@@ -3,7 +3,8 @@
 @section('content')
 
 {{-- FORM UPDATE RESTAURANT --}}
-<form action="{{ route('admin.restaurants.update', $restaurant->slug) }}" method="post" enctype="multipart/form-data">
+<h1 class="text-center pb-5">MODIFICA IL TUO RISTORANTE</h1>
+<form class="text-center py-5" action="{{ route('admin.restaurants.update', $restaurant->slug) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
      {{-- NAME --}}
@@ -101,8 +102,20 @@
 
     @endif
     {{-- SUBMIT --}}
-    <input type="submit" value="Aggiorna">
+    <div>
+
+        <input type="submit" class="btn btn-success text-center px-5" value="Aggiorna">
+    </div>
+
 </form>
 
 
 @endsection
+
+<style>
+
+label {
+        width: 60px;
+        padding-bottom: 10px;
+    }
+</style>
