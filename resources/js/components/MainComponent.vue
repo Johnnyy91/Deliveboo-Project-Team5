@@ -9,8 +9,8 @@
 
                 </div>
 
-                <div class="fl-typologies d-flex mb-5 justify-content-between">
-                <div v-for="item in typologies" :key="item.id">
+                <div class="fl-typologies d-flex mb-5 justify-content-between row">
+                <div class="col-lg col-md-4 text-center mt-3" v-for="item in typologies" :key="item.id">
                     <button @click="showtipology($event)" :value="item.slug" type="button" class="btn btn-lg fl-button text-capitalize"> {{item.name}}</button>
                 </div>
             </div>
