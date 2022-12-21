@@ -2,10 +2,10 @@
 
 @section('content')
 
-<h1>MENU'</h1>
+<h1 class="text-center ">MENU'</h1>
 @foreach ($dishes as $item)
 
-
+<div class="text-center">
     Piatto: {{$item->name}} <span class="mx-5">Prezzo:{{$item->price}} EURO</span>
 
     <div class="w-100">
@@ -24,5 +24,17 @@
         <div><a class="btn btn-warning my-3 mx-3" href="{{ route('admin.dishes.edit', $item->id) }}">Modifica Piatto</a></div>
 
 
+
+
+</div>
+
 @endforeach
 @endsection
+
+<style>
+
+label {
+        width: 60px;
+        padding-bottom: 10px;
+    }
+</style>
