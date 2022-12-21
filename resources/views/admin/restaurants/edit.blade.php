@@ -101,7 +101,7 @@
 
     @endif
     {{-- SUBMIT --}}
-    <input type="submit" value="Update">
+    <input type="submit" value="Aggiorna">
 </form>
 
 
