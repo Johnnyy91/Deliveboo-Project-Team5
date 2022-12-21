@@ -1,7 +1,7 @@
 <template>
-        <section class="container">
-            <div>
-            <h1 class="text-center mb-5 text-success">COSA VORRESTI MANGIARE ?</h1>
+        <section class="container py-5 pb-5 pt-5">
+            <div class="pt-2">
+            <h1 class="text-center mb-2 text-success pt-5 mt-5">COSA VORRESTI MANGIARE ?</h1>
             </div >
                 <div class="d-flex justify-content-center mb-5">
 
@@ -64,6 +64,7 @@
     box-sizing: border-box;
 }
 
+
     h1 {
         font-family: 'Kanit', sans-serif;
         font-weight: 400;
@@ -81,5 +82,6 @@
     h1 {
         font-size: 50px;
     }
+
 
 </style>

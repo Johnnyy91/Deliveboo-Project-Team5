@@ -478,7 +478,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.buyClass {\n    position: fixed;\n    top: 5rem;\n    left: 50%;\n    transform: translateX(-50%);\n    width: 60%;\n    height: 70%;\n    background-color: #fff;\n    border-radius: 10px;\n    z-index: 999;\n    overflow-y: auto;\n}\n", ""]);
+exports.push([module.i, "\n.buyClass {\r\n    position: fixed;\r\n    top: 5rem;\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    width: 60%;\r\n    height: 70%;\r\n    background-color: #fff;\r\n    border-radius: 10px;\r\n    z-index: 999;\r\n    overflow-y: auto;\n}\r\n", ""]);
 
 // exports
 
