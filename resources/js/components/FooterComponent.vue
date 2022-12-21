@@ -102,7 +102,7 @@ footer {
     background-color: $fl-dark;
     color: $fl-blank;
     font-family: 'Kanit', sans-serif;
-    position: relative;
+    //position: relative;
     bottom: 0;
 
     ul {
