@@ -6,7 +6,7 @@
     @csrf
     @method('PATCH')
     <div>
-        <label for="name">Name:</label>
+        <label for="name">Nome:</label>
         <input required maxlength="255" type="text" name="name" value="{{ old('name', $dish->name) }}">
         @error('name')
             <div class="my-2 bg-danger text-white">
@@ -15,7 +15,7 @@
         @enderror
     </div>
     <div>
-        <label for="description">Description:</label>
+        <label for="description">Descrizione:</label>
         <input required maxlength="255" type="text" name="description" value="{{ old('description', $dish->description) }}">
         @error('description')
             <div class="my-2 bg-danger text-white">
@@ -34,7 +34,7 @@
     </div>
 
     <div>
-        <label for="ingredients">Ingredients:</label>
+        <label for="ingredients">Ingredienti:</label>
         <input required maxlength="255" type="text" name="ingredients" value="{{ old('ingredients', $dish->ingredients) }}">
         @error('ingredients')
             <div class="my-2 bg-danger text-white">
@@ -44,7 +44,7 @@
     </div>
 
     <div>
-        <label for="visible">Visible:</label>
+        <label for="visible">Visibile:</label>
         <input  type="checkbox" name="visible" value="{{ old('visible', $dish->visible) }}">
         @error('visible')
             <div class="my-2 bg-danger text-white">
@@ -55,7 +55,7 @@
 
 
     <div>
-        <label for="image">Image:</label>
+        <label for="image">Img:</label>
         <input type="file" name="image">
     </div>
     <input type="submit" value="Create">
