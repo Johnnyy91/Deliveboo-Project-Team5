@@ -9,7 +9,7 @@
     Piatto: {{$item->name}} <span class="mx-5">Prezzo:{{$item->price}} EURO</span>
 
     <div class="w-100">
-       <img class="w-25" src="{{asset('storage/'.$item->img)}}" alt="img">
+       <img class="w-50" src="{{asset('storage/'.$item->img)}}" alt="img">
     </div>
 
     {{-- DELETE --}}
