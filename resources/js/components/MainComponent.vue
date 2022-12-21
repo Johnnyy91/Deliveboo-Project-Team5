@@ -1,8 +1,5 @@
 <template>
     <main>
-
-        <WorkWithUsComponentVue/>
-        <RestaurantDetailsVue />
         <section class="container">
             <div>
             <h1 class="text-center mb-5">COSA VORRESTI MANGIARE ?</h1>
@@ -23,13 +20,9 @@
 </template>
 
 <script>
-import WorkWithUsComponentVue from './WorkWithUsComponent.vue';
-import RestaurantDetailsVue from './RestaurantDetails.vue';
 
     export default {
     name: 'MainComponent',
-
-    components: {WorkWithUsComponentVue, RestaurantDetailsVue},
 
     data(){
         return {
@@ -91,9 +84,5 @@ import RestaurantDetailsVue from './RestaurantDetails.vue';
     h1 {
         font-size: 50px;
     }
-
-
-
-
 
 </style>
