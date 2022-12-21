@@ -1,5 +1,4 @@
 <template>
-    <main>
         <section class="container">
             <div>
             <h1 class="text-center mb-5">COSA VORRESTI MANGIARE ?</h1>
@@ -16,7 +15,6 @@
                 </div>
             </div>
         </section>
-    </main>
 </template>
 
 <script>
