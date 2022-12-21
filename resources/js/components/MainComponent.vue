@@ -5,7 +5,7 @@
             </div >
                 <div class="d-flex justify-content-center mb-5">
 
-                    <img src="https://www.pngmart.com/files/5/Hamburger-PNG-Transparent-Image.png" alt="">
+                    <img src="https://www.pngmart.com/files/5/Hamburger-PNG-Transparent-Image.png" alt="" class="img-fluid">
 
                 </div>
 
