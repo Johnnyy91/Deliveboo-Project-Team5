@@ -29,8 +29,12 @@
 </script>
 
 <style scoped lang="scss">
-    .space-from-header {
-        margin-top: 8rem;
+    main {
+         background-image: url('https://diplomartbrussels.com/wp-content/uploads/2020/09/food-background-images-94-images-in-co-381169-png-images-pngio-food-background-png-1440_619.png');
+        background-size: cover;
+
+
+
     }
 
 
