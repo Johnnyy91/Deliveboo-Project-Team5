@@ -14,7 +14,7 @@
                         <h2 class="title pt-3">DELIVEBOO</h2>
                     </div>
                     <div class="d-flex">
-                        <a class="btn btn-danger mx-3" href='/register'>Sei un Ristoratore? REGISTRATI</a>
+                        <a class="btn btn-danger mx-3" href='/register'>AREA RISERVATA</a>
                     </div>
                 </div>
             </nav>
