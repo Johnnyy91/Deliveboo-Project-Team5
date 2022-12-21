@@ -68,9 +68,9 @@ var render = function render() {
       staticClass: "d-inline"
     }, [_vm._v(_vm._s(restaurant.address))])]), _vm._v(" "), _c("div", {}, [_c("div", [_c("h5", {
       staticClass: "d-inline"
-    }, [_vm._v("Orario Pranzo:")]), _vm._v(" "), _c("span", [_vm._v(_vm._s(restaurant.lunch_time_slot_open))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(restaurant.lunch_time_slot_close))])]), _vm._v(" "), _c("div", [_c("h5", {
+    }, [_vm._v("Orario Pranzo:")]), _vm._v(" "), _c("span", [_vm._v(_vm._s(restaurant.lunch_time_slot_open))]), _vm._v(" "), _c("span", [_vm._v("/")]), _vm._v(" "), _c("span", [_vm._v(_vm._s(restaurant.lunch_time_slot_close))])]), _vm._v(" "), _c("div", [_c("h5", {
       staticClass: "d-inline"
-    }, [_vm._v("Orario Cena:")]), _vm._v(" "), _c("span", [_vm._v(_vm._s(restaurant.dinner_time_slot_open))]), _vm._v(" "), _c("span", [_vm._v(_vm._s(restaurant.dinner_time_slot_close))])])]), _vm._v(" "), _c("div", [_vm._l(restaurant.typologies, function (typology) {
+    }, [_vm._v("Orario Cena:")]), _vm._v(" "), _c("span", [_vm._v(_vm._s(restaurant.dinner_time_slot_open))]), _vm._v(" "), _c("span", [_vm._v("/")]), _vm._v(" "), _c("span", [_vm._v(_vm._s(restaurant.dinner_time_slot_close))])])]), _vm._v(" "), _c("div", [_vm._l(restaurant.typologies, function (typology) {
       return _c("span", {
         key: typology.id
       }, [_vm._v("Tipologia:" + _vm._s(typology.name))]);

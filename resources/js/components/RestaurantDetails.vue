@@ -26,12 +26,12 @@
                             <div class="">
                                 <div>
                                     <h5 class="d-inline">Orario Pranzo:</h5>
-                                    <span>{{ restaurant.lunch_time_slot_open }}</span>
+                                    <span>{{ restaurant.lunch_time_slot_open }}</span> <span>/</span>
                                     <span>{{ restaurant.lunch_time_slot_close }}</span>
                                 </div>
                                 <div>
                                     <h5 class="d-inline">Orario Cena:</h5>
-                                    <span >{{ restaurant.dinner_time_slot_open }}</span>
+                                    <span >{{ restaurant.dinner_time_slot_open }}</span> <span>/</span>
                                     <span>{{ restaurant.dinner_time_slot_close }}</span>
                                 </div>
                             </div>
