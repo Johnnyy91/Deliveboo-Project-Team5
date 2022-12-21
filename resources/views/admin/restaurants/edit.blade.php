@@ -1,4 +1,4 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
 @section('content')
 
@@ -8,7 +8,7 @@
     @method('PATCH')
      {{-- NAME --}}
     <div>
-        <label for="name">Name:</label>
+        <label for="name">Nome:</label>
         <input required maxlength="255" type="text" name="name" value="{{ old('name', $restaurant->name) }}">
         @error('name')
             <div class="my-2 bg-danger text-white">
@@ -28,7 +28,7 @@
     </div>
     {{-- ADDRESS --}}
     <div>
-        <label for="address">Address:</label>
+        <label for="address">Indirizzo:</label>
         <input required maxlength="255" type="text" name="address" value="{{ old('address', $restaurant->address) }}">
         @error('address')
             <div class="my-2 bg-danger text-white">
@@ -39,8 +39,8 @@
     {{-- TIME SLOTS --}}
     <div>
         {{-- OPEN LUNCH --}}
-        <span>Lunch  </span>
-        <label for="lunch_time_slot_open">Open:</label>
+        <span>Pranzo  </span>
+        <label for="lunch_time_slot_open">Apertura:</label>
         <input required type="time" name="lunch_time_slot_open" value="{{ old('lunch_time_slot_open', $restaurant->lunch_time_slot_open) }}">
         @error('lunch_time_slot_open')
             <div class="my-2 bg-danger text-white">
@@ -48,7 +48,7 @@
             </div>
         @enderror
         {{-- CLOSE LUNCH --}}
-        <label for="lunch_time_slot_close">Close:</label>
+        <label for="lunch_time_slot_close">Chiusura:</label>
         <input required type="time" name="lunch_time_slot_close" value="{{ old('lunch_time_slot_close', $restaurant->lunch_time_slot_close) }}">
         @error('lunch_time_slot_close')
             <div class="my-2 bg-danger text-white">
@@ -58,8 +58,8 @@
     </div>
     <div>
         {{-- OPEN DINNER --}}
-        <span>Dinner  </span>
-        <label for="dinner_time_slot_open">Open:</label>
+        <span>Cena </span>
+        <label for="dinner_time_slot_open">Apertura:</label>
         <input required type="time" name="dinner_time_slot_open" value="{{ old('dinner_time_slot_open', $restaurant->dinner_time_slot_open) }}">
         @error('dinner_time_slot_open')
             <div class="my-2 bg-danger text-white">
@@ -67,7 +67,7 @@
             </div>
         @enderror
         {{-- CLOSE DINNER --}}
-        <label for="dinner_time_slot_close">Close:</label>
+        <label for="dinner_time_slot_close">Chiusura:</label>
         <input required type="time" name="dinner_time_slot_close" value="{{ old('dinner_time_slot_close', $restaurant->dinner_time_slot_close) }}">
         @error('dinner_time_slot_close')
             <div class="my-2 bg-danger text-white">
@@ -77,12 +77,12 @@
     </div>
     {{-- IMAGE --}}
     <div>
-        <label for="image">Image:</label>
+        <label for="image">Img:</label>
         <input type="file" name="image">
     </div>
     {{-- TYPOLOGIES --}}
     @if ($errors->any())
-    <label for="typology_id">Typology:</label>
+    <label for="typology_id">Tipologia:</label>
     <select name="typologies[]" id="typology_id" multiple>
     @foreach ($typologies as $typology )
         <option {{ in_array($typology->id, old('typology', [])) ? 'selected' : '' }}
@@ -91,7 +91,7 @@
     </select>
 
    @else  {{-- NO ERROR --}}
-    <label for="typology_id">Typology:</label>
+    <label for="typology_id">Tipologia:</label>
     <select name="typologies[]" id="typology_id" multiple>
     @foreach ($typologies as $typology )
         <option {{ $restaurant->typologies->contains($typology) ? 'selected' : '' }}
