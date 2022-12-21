@@ -1,6 +1,6 @@
 <template>
         <section class="container py-5 pb-5 pt-5">
-            <div class="pt-2">
+            <div class="pt-4">
             <h1 class="text-center mb-2 text-success pt-5 mt-5">COSA VORRESTI MANGIARE ?</h1>
             </div >
                 <div class="d-flex justify-content-center mb-5">
