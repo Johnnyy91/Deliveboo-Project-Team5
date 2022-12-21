@@ -16,12 +16,12 @@
     <form class="mt-3" method="POST" action="{{ route('admin.dishes.destroy', $item->id) }}">
         @csrf
         @method('DELETE')
-        <input class="btn btn-success mb-3"onclick="return confirm('Vuoi davvero eliminare il piatto?')" type="submit" value="Elimina">
+        <input class="btn btn-danger mb-3"onclick="return confirm('Vuoi davvero eliminare il piatto?')" type="submit" value="Elimina">
     </form>
 
 
      {{-- EDIT  --}}
-        <div><a class="btn btn-warning my-3 mx-3" href="{{ route('admin.dishes.edit', $item->id) }}">Modifica Piatto</a></div>
+        <div><a class="btn btn-info my-3 mx-3" href="{{ route('admin.dishes.edit', $item->id) }}">Modifica Piatto</a></div>
 
 
 
