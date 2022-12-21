@@ -1,6 +1,6 @@
 <template>
 
-    <section>
+    <header>
         <div class="custom-shape-divider-top-1671124742">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
@@ -12,10 +12,9 @@
                     <img src="./images/DeliveBoo-Logo.png" alt="logo" class="fl-logo d-flex">
                     <h2 class="title pt-3">DELIVEBOO</h2>
                 </div>
-
             </nav>
         </div>
-    </section>
+    </header>
 
 </template>
 
@@ -68,7 +67,8 @@
     }
 }
 
-section {
+header {
+    height: 100px;
     background-color: $fl-secondary;
     position: relative;
     z-index: 999;
@@ -92,7 +92,7 @@ section {
         position: relative;
         display: block;
         width: calc(148% + 1.3px);
-        height: 217px;
+        height: 100px;
         transform: rotateY(180deg);
     }
 
