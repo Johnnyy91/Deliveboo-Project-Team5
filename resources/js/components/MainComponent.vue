@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="fl-typologies d-flex mb-5 justify-content-between row">
-                <div class="col-lg col-md-4 text-center" v-for="item in typologies" :key="item.id">
+                <div class="col-lg col-md-3 text-center" v-for="item in typologies" :key="item.id">
                     <button @click="showtipology($event)" :value="item.slug" type="button" class="btn btn-lg btn-success text-capitalize"> {{item.name}}</button>
                 </div>
             </div>
@@ -81,6 +81,10 @@
 
     h1 {
         font-size: 50px;
+    }
+
+    .btn {
+        width: 126px;
     }
 
     .hamb {
