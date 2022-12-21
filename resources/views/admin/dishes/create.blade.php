@@ -57,7 +57,7 @@
         <label for="image">Img:</label>
         <input type="file" name="image">
     </div>
-    <input type="submit" value="Create">
+    <input type="submit" value="Crea">
 </form>
 
 
