@@ -15,7 +15,7 @@ class BraintreeController extends Controller
 {
     public function createTransaction(Request $request) {
         // Create new Gateway
-         dd("dddddds");
+        //  dd("dddddds");
         // $gateway = new \Braintree\Gateway([
         //     'environment' => "sandbox",
         //     'merchantId' => "nr7dbky87tmcnygt",
