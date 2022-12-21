@@ -1,19 +1,22 @@
-@extends('layouts.app') <!--estendo layout.app-->
+@extends('layouts.app') <!--estendo layout.app-->endforeach
 
 
 
 @section('content')
-@foreach ($query as $order)
+@foreach ($groupedOrders as $groupedOrder)
 <div>
-    <h1>Order:</h1>
-    <h2>Address order: {{ $order->address_client }}</h2>
-    <h3>Email Client: {{$order->email_client}}</h3>
-    <h3>Total Price: {{$order->total_price}} Euro</h3>
-{{-- @foreach ($order->dishes as $dish)
+    <h1>Orders:</h1>
+    <h2>Address Order: {{ $groupedOrder['address_client'] }}</h2>
+    <h3>Email Client: {{$groupedOrder['email_client']}}</h3>
+    <h3>Total Price: {{$groupedOrder['total_price']}} Euro</h3>
+    <div>Dish in orders:
+        <div>
+            @foreach ($groupedOrder['dishes'] as $dish)
+                <div>{{ $dish['quantity'] }} {{$dish['name']}}</div>
+            @endforeach
+        </div>
+    </div>
 
-    Dishes:
-    {{ $dish->name }}
-@endforeach --}}
 </div>
 @endforeach
 @endsection
