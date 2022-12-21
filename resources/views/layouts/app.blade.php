@@ -23,8 +23,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand logo " href="{{ url('/') }}">
-                    <img src="./images/DeliveBoo-Logo.png" alt="logo" class="fl-logo d-flex"> <span>AREA RISERVATA</span>
+                <a class="navbar-brand logo" href="{{ url('/') }}">
+                    <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/55be6ade0000ff000581b457/0x0.png" alt="logo" class="fl-logo d-flex">
+                    <span>AREA RISERVATA</span>
 
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -87,7 +88,7 @@
     }
 
     img {
-        width: 40px;
+        width: 50px;
         padding-right: 10px;
     }
 </style>
