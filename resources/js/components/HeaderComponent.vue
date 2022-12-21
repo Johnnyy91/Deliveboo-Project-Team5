@@ -2,9 +2,9 @@
 
     <header class="container-fluid pt-3">
         <div class="custom-shape-divider-top-1671124742">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+
             <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
-            </svg>
+
         </div>
         <div class="container-fluid px-5">
             <nav>
@@ -14,7 +14,7 @@
                         <h2 class="title pt-3">DELIVEBOO</h2>
                     </div>
                     <div class="d-flex">
-                        <a class="btn btn-success mx-3" href='/register'>Sei un Ristoratore? REGISTRATI</a>
+                        <a class="btn btn-danger mx-3" href='/register'>Sei un Ristoratore? REGISTRATI</a>
                     </div>
                 </div>
             </nav>
@@ -74,7 +74,7 @@
 
 header {
     height: 100px;
-    background-color: $fl-secondary;
+    background-color: $fl-dark;
     position: relative;
     z-index: 999;
 
