@@ -2,28 +2,32 @@
 
 @section('content')
 
-<h1 class="text-center ">MENU'</h1>
+<h1 class="text-center mb-5">MENU'</h1>
 @foreach ($dishes as $item)
 
 <div class="text-center">
-    Piatto: {{$item->name}} <span class="mx-5">Prezzo:{{$item->price}} EURO</span>
-
-    <div class="w-100">
-       <img class="w-50" src="{{asset('storage/'.$item->img)}}" alt="img">
+    <div class="mb-2 d-flex flex-column">
+        <span>Piatto: {{$item->name}}</span> <span class="mx-5">Prezzo:{{$item->price}} EURO</span>
     </div>
 
-    {{-- DELETE --}}
-    <form class="mt-3" method="POST" action="{{ route('admin.dishes.destroy', $item->id) }}">
-        @csrf
-        @method('DELETE')
-        <input class="btn btn-danger mb-3"onclick="return confirm('Vuoi davvero eliminare il piatto?')" type="submit" value="Elimina">
-    </form>
+
+    <div class="w-100">
+       <img class="w-25" src="{{asset('storage/'.$item->img)}}" alt="img">
+    </div>
+
+    <div class="d-flex justify-content-center mb-5">
+        {{-- DELETE --}}
+        <form class="mt-3" method="POST" action="{{ route('admin.dishes.destroy', $item->id) }}">
+            @csrf
+            @method('DELETE')
+            <input class="btn btn-danger mb-3"onclick="return confirm('Vuoi davvero eliminare il piatto?')" type="submit" value="Elimina">
+        </form>
 
 
-     {{-- EDIT  --}}
-        <div><a class="btn btn-info my-3 mx-3" href="{{ route('admin.dishes.edit', $item->id) }}">Modifica Piatto</a></div>
+        {{-- EDIT  --}}
+            <div class="d-inline"><a class="btn btn-info my-3 mx-3" href="{{ route('admin.dishes.edit', $item->id) }}">Modifica Piatto</a></div>
 
-
+    </div>
 
 
 </div>
