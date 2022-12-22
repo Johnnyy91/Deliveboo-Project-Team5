@@ -18,11 +18,11 @@
 
                         <div class="button-area d-flex my-5 py-5">
                             <label for="food">Pezzi:</label>
-                            <input v-model="dish.quantity" type="number" id="food" name="food" min="1" max="100">
+                            <input v-model="dish.quantity" type="number" id="food" name="food" min="1" max="100" placeholder="1">
 
                             <!-- ADD DISH -->
                             <button @click="addDish(dish, dish.quantity)" class="btn btn-info mx-5">
-                                Aggiungi
+                                Aggiungi al Carrello
                             </button>
                             <!-- /ADD DISH -->
 
@@ -63,6 +63,8 @@
                     <button class="btn btn-danger mt-5" @click="orderClick()">Ordina</button>
 
                     <OrderComponent v-if="validation" :cart="cart"/>
+
+
                 </div>
             </div>
         </div>
@@ -172,8 +174,10 @@ img {
 
 .card {
     width: 500;
-    background-color: #f6f6f6;
+    background: radial-gradient(circle at -8.9% 51.2%, rgb(4, 202, 187) 0%, rgb(4, 202, 187) 15.9%, #009688 15.9%, #009688 24.4%, rgb(46 51 51) 24.5%, rgb(46 51 51) 66%);
     margin: 20px 20px;
+    color: white;
+    border-radius:1rem;
 }
 
 button {

@@ -241,7 +241,8 @@ var render = function render() {
         id: "food",
         name: "food",
         min: "1",
-        max: "100"
+        max: "100",
+        placeholder: "1"
       },
       domProps: {
         value: dish.quantity
@@ -259,7 +260,7 @@ var render = function render() {
           return _vm.addDish(dish, dish.quantity);
         }
       }
-    }, [_vm._v("\n                            Aggiungi\n                        ")]), _vm._v(" "), _c("button", {
+    }, [_vm._v("\n                            Aggiungi al Carrello\n                        ")]), _vm._v(" "), _c("button", {
       staticClass: "btn btn-danger mx-5",
       on: {
         click: function click($event) {
@@ -459,7 +460,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".text[data-v-98f701fa] {\n  height: 100%;\n}\nimg[data-v-98f701fa] {\n  height: 200px;\n  width: 300px;\n}\n.card[data-v-98f701fa] {\n  width: 500;\n  background-color: #f6f6f6;\n  margin: 20px 20px;\n}\nbutton[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\ninput[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\n.card-container[data-v-98f701fa] {\n  height: 400px;\n  background-color: #f6f6f6;\n  border: 3px solid rgb(29, 102, 0);\n  margin: 20px 20px;\n}", ""]);
+exports.push([module.i, ".text[data-v-98f701fa] {\n  height: 100%;\n}\nimg[data-v-98f701fa] {\n  height: 200px;\n  width: 300px;\n}\n.card[data-v-98f701fa] {\n  width: 500;\n  background: radial-gradient(circle at -8.9% 51.2%, rgb(4, 202, 187) 0%, rgb(4, 202, 187) 15.9%, #009688 15.9%, #009688 24.4%, rgb(46, 51, 51) 24.5%, rgb(46, 51, 51) 66%);\n  margin: 20px 20px;\n  color: white;\n  border-radius: 1rem;\n}\nbutton[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\ninput[data-v-98f701fa] {\n  height: 50px;\n  width: 100px;\n}\n.card-container[data-v-98f701fa] {\n  height: 400px;\n  background-color: #f6f6f6;\n  border: 3px solid rgb(29, 102, 0);\n  margin: 20px 20px;\n}", ""]);
 
 // exports
 
