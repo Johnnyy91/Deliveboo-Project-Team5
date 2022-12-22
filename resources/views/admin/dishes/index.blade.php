@@ -33,6 +33,11 @@
 </div>
 
 @endforeach
+   {{-- ADD DISH--}}
+   <a class="btn btn-info my-3 mx-3" href="{{ route('admin.dishes.create') }}">Aggiungi Piatto</a>
+
+ {{-- RITORNO NEL HOME --}}
+ <a class="btn btn-info my-3 mx-3" href="{{ route('admin.restaurants.index') }}">Back to home</a>
 @endsection
 
 <style>
