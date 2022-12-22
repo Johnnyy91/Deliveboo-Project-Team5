@@ -15,7 +15,8 @@ class TypologySeeder extends Seeder
      */
     public function run()
     {
-        $typologies = ['pizzeria','italiana','cinese','giapponese', 'thailandese', 'messicano', 'fast food'];
+        //$typologies = ['pizzeria','italiana','cinese','giapponese', 'thailandese', 'messicano', 'fast food'];
+        $typologies = ['gelateria','greco','vegetariano','libanese','americano'];
         foreach($typologies as $model){
             $typology = new typology();
             $typology->name = $model;
