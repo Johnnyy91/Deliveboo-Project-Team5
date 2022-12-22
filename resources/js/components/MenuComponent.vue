@@ -18,7 +18,8 @@
 
                         <div class="button-area d-flex my-5 py-5">
                             <label for="food">Pezzi:</label>
-                            <input v-model="dish.quantity" type="number" id="food" name="food" min="1" max="100" placeholder="1">
+                            <input v-model="dish.quantity" type="number" id="food" name="food" min="1" max="100"
+                                placeholder="1">
 
                             <!-- ADD DISH -->
                             <button @click="addDish(dish, dish.quantity)" class="btn btn-info mx-5">
@@ -57,12 +58,15 @@
                         <span class="dish">{{ dish.name }}</span>
                         <span class="count">q.{{ dish.count }}</span><br>
                         <span class="price">price{{ formater(dish.count * dish.price) }}</span>
+                        <div @click="removeDish(dish)" class="btn btn-danger mx-2 px-3 py-1">
+                            Rimuovi
+                        </div>
                     </div>
                     <div>Totale:{{ totalPrice() }}</div>
                     <!-- <router-link :to="{name:'order',params:{cart}} " class="btn btn-danger mt-5">Ordina</router-link> -->
                     <button class="btn btn-danger mt-5" @click="orderClick()">Ordina</button>
 
-                    <OrderComponent v-if="validation" :cart="cart"/>
+                    <OrderComponent v-if="validation" :cart="cart" />
 
 
                 </div>
@@ -84,7 +88,7 @@ export default {
         return {
             dishes: [],
             cart: [],
-            validation:false
+            validation: false
         }
     },
     mounted() {
@@ -154,10 +158,10 @@ export default {
             });
             return this.formater(sum);
         },
-        orderClick(){
+        orderClick() {
             console.log('before', this.validation);
-            this.validation=true;
-            console.log('after' , this.validation);
+            this.validation = true;
+            console.log('after', this.validation);
         }
     },
 }
@@ -177,7 +181,7 @@ img {
     background: radial-gradient(circle at -8.9% 51.2%, rgb(4, 202, 187) 0%, rgb(4, 202, 187) 15.9%, #009688 15.9%, #009688 24.4%, rgb(46 51 51) 24.5%, rgb(46 51 51) 66%);
     margin: 20px 20px;
     color: white;
-    border-radius:1rem;
+    border-radius: 1rem;
 }
 
 button {
