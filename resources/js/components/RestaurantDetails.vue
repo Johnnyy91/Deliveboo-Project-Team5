@@ -1,6 +1,7 @@
 <template>
 
     <div class="py-5 container-first">
+        <router-link :to="'/restaurant'" class="btn btn-danger mx-3">Ritorna alla Homepage</router-link>
         <div class="row d-flex">
             <div class=" col-lg-12 col-md-4">
                 <div class="py-5 card-restaurant d-flex" v-for="restaurant in restaurants" :key="restaurant.id">

@@ -49,7 +49,12 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "py-5 container-first"
-  }, [_c("div", {
+  }, [_c("router-link", {
+    staticClass: "btn btn-danger mx-3",
+    attrs: {
+      to: "/restaurant"
+    }
+  }, [_vm._v("Ritorna alla Homepage")]), _vm._v(" "), _c("div", {
     staticClass: "row d-flex"
   }, [_c("div", {
     staticClass: "col-lg-12 col-md-4"
@@ -80,7 +85,7 @@ var render = function render() {
         to: "/menu/" + restaurant.slug
       }
     }, [_vm._v("Visualizza Menù")])], 2)])]);
-  }), 0)])]);
+  }), 0)])], 1);
 };
 var staticRenderFns = [];
 render._withStripped = true;
