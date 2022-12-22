@@ -19,28 +19,31 @@
 
                         <div>
                             <span>Indirizzo:</span>
-                       <h3 class="d-inline">{{ restaurant.address }}</h3>
+                            <h3 class="d-inline">{{ restaurant.address }}</h3>
                         </div>
 
 
 
-                            <div class="">
-                                <div>
-                                    <h5 class="d-inline">Orario Pranzo:</h5>
-                                    <span>{{ restaurant.lunch_time_slot_open }}</span> <span>/</span>
-                                    <span>{{ restaurant.lunch_time_slot_close }}</span>
-                                </div>
-                                <div>
-                                    <h5 class="d-inline">Orario Cena:</h5>
-                                    <span >{{ restaurant.dinner_time_slot_open }}</span> <span>/</span>
-                                    <span>{{ restaurant.dinner_time_slot_close }}</span>
-                                </div>
+                        <div class="">
+                            <div>
+                                <h5 class="d-inline">Orario Pranzo:</h5>
+                                <span>{{ restaurant.lunch_time_slot_open }}</span> <span>/</span>
+                                <span>{{ restaurant.lunch_time_slot_close }}</span>
                             </div>
-                                <div>
-                                    <span v-for="typology in restaurant.typologies" :key="typology.id">Tipologia:{{ typology.name }}</span>
+                            <div>
+                                <h5 class="d-inline">Orario Cena:</h5>
+                                <span>{{ restaurant.dinner_time_slot_open }}</span> <span>/</span>
+                                <span>{{ restaurant.dinner_time_slot_close }}</span>
+                            </div>
+                        </div>
+                        <div>
+                            Tipologie:
+                            <span v-for="typology in restaurant.typologies" :key="typology.id">{{ typology.name }}
+                            </span>
 
-                                    <router-link :to="'/menu/' + restaurant.slug" class="btn btn-danger d-block">Visualizza Menù</router-link>
-                                </div>
+                            <router-link :to="'/menu/' + restaurant.slug" class="btn btn-danger d-block">Visualizza
+                                Menù</router-link>
+                        </div>
 
 
                     </div>
@@ -99,9 +102,7 @@ img {
     color: white
 }
 
-span{
+span {
     font-size: 1rem
 }
-
-
 </style>
