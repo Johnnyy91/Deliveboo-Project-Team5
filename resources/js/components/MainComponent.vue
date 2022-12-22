@@ -84,7 +84,7 @@
     }
 
     .btn {
-        width: 126px;
+        width: 120px;
     }
 
     .hamb {
